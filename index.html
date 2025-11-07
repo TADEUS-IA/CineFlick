@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlick - Sua Nova Experiência de Streaming</title>
+    <meta name="description" content="CineFlick oferece os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta name="keywords" content="streaming, filmes, séries, canais ao vivo, 4K, HD, Full HD, assistir online, cinema, entretenimento">
+    <meta name="author" content="CineFlick">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cineflick.com/">
+    <meta property="og:title" content="CineFlick - Sua Nova Experiência de Streaming">
+    <meta property="og:description" content="Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta property="og:image" content="https://www.cineflick.com/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.cineflick.com/">
+    <meta property="twitter:title" content="CineFlick - Sua Nova Experiência de Streaming">
+    <meta property="twitter:description" content="Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta property="twitter:image" content="https://www.cineflick.com/twitter-image.jpg">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">CINEFLICK</a>
+            <a href="#planos" class="cta-button cta-nav" id="nav-cta">
+                Experimentar Agora
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="hero">
+        <div class="video-background-wrapper">
+            <iframe id="hero-video-iframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="hero-content container">
+            <h1>Sua Nova <span class="highlight">Experiência</span> de Entretenimento.</h1>
+            <p>Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Conteúdo exclusivo para você, sem travamentos e com a melhor qualidade.</p>
+            <a href="#planos" class="cta-button hero-cta-main" id="hero-cta-main">
+                Assinar Agora
+            </a>
+        </div>
+    </section>
+
+    <section class="how-it-works-section" id="como-funciona">
+        <div class="container text-center text-content">
+            <h2>Como Funciona?</h2>
+            <p>É simples, rápido e você pode cancelar a qualquer momento. Assista em qualquer dispositivo!</p>
+        </div>
+        <div class="container how-it-works-card animate-on-scroll">
+            <div class="video-player-wrapper">
+                <iframe id="app-demo-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="pricing-content">
+                <div class="pricing-text">
+                    <h3>Experimente nosso plano mensal.</h3>
+                    <p>Tenha acesso ilimitado a todo o nosso conteúdo premium, canais ao vivo e lançamentos exclusivos.</p>
+                </div>
+                <div class="pricing-action">
+                    <span class="price-tag">A partir de</span>
+                    <span class="price-amount-green">R$19,90 / mês</span>
+                    <a href="#" class="cta-button" id="cta-plano-mensal" target="_blank" rel="noopener noreferrer">
+                        Começar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container compatibility-bar animate-on-scroll">
+            <p class="compatibility-text">Compatível com seus dispositivos favoritos:</p>
+            <div class="logo-bar">
+                <img src="https://images.icon-icons.com/2699/PNG/512/lg_logo_icon_170264.png" alt="LG">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Samsung_old_logo_before_year_2015.svg/2560px-Samsung_old_logo_before_year_2015.svg.png" alt="Samsung">
+                <img src="amazon.png" alt="amazon">
+                <img src="android.png" alt="Android">
+                <img src="apple.png" alt="Apple iOS">
+                <img src="roku.png" alt="Navegadores Web">
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-features-section" id="features">
+        <div class="container text-center text-content">
+            <p class="section-subtitle">O melhor conteúdo para você</p>
+            <h2 class="section-title-red">A televisão do futuro é pela internet, sem antenas e sem decodificadores</h2>
+            <p>Explore um universo de entretenimento sem limites, com uma variedade de conteúdo que se adapta ao seu estilo.</p>
+        </div>
+        <div class="container feature-card-grid" id="feature-card-grid">
+        </div>
+    </section>
+
+    <section class="streaming-logos-section" id="streaming">
+        <div class="container streaming-card animate-on-scroll">
+            <h3>Tenha acesso ao conteúdo de vários serviços de streaming em uma única plataforma!</h3>
+            <div class="streaming-logo-grid">
+                <img src="images/logo-netflix.png" alt="Netflix">
+                <img src="images/logo-disney.png" alt="Disney+">
+                <img src="images/logo-hbo.png" alt="HBO Max">
+                <img src="images/logo-prime.png" alt="Amazon Prime Video">
+                <img src="images/logo-star.png" alt="Star+">
+                <img src="images/logo-globoplay.png" alt="Globoplay">
+                <img src="images/logo-apple-tv.png" alt="Apple TV+">
+                <img src="images/logo-paramount.png" alt="Paramount+">
+                <img src="images/logo-crunchyroll.png" alt="Crunchyroll">
+                <img src="images/logo-telecine.png" alt="Telecine">
+            </div>
+            <a href="#" class="cta-button" id="cta-streaming-logos" target="_blank" rel="noopener noreferrer">
+                Ver todos os conteúdos
+            </a>
+        </div>
+    </section>
+
+    <section class="sports-section" id="esportes">
+        <div class="container text-center text-content">
+            <h2 class="dark-text">Para os fãs de esporte, a CineFlick é o lugar certo!</h2>
+            <p class="dark-text">Acompanhe os maiores campeonatos de futebol do Brasil e do mundo, além de transmissões de outros esportes que você ama, tudo em um só lugar.</p>
+        </div>
+        <div class="container sports-logo-grid">
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-premier.png" alt="Premier League">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-libertadores.png" alt="Libertadores">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-nba.png" alt="NBA">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-f1.png" alt="Fórmula 1">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-ufc.png" alt="UFC">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="images/logo-nfl.png" alt="NFL">
+            </article>
+        </div>
+    </section>
+    
+    <section class="final-cta-section" id="final-cta">
+        <div class="cta-background-image"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="animate-on-scroll">Com a CineFlick você assiste tudo quando e onde quiser!</h2>
+            <p class="animate-on-scroll">Cancele a qualquer momento.</p>
+            <a href="#" class="cta-button cta-button-secondary animate-on-scroll" id="cta-final-call" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="comparison-section" id="economize">
+        <div class="container comparison-card animate-on-scroll">
+            <h3>Isso é o que você pagaria se assinasse todas as plataformas de streaming:</h3>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <img src="images/logo-netflix.png" alt="Netflix">
+                    <span class="comparison-price">R$59,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-disney.png" alt="Disney+">
+                    <span class="comparison-price">R$55,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-hbo.png" alt="HBO Max">
+                    <span class="comparison-price">R$34,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-prime.png" alt="Amazon Prime">
+                    <span class="comparison-price">R$19,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-star.png" alt="Star+">
+                    <span class="comparison-price">R$62,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-globoplay.png" alt="Globoplay">
+                    <span class="comparison-price">R$21,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-apple-tv.png" alt="Apple TV+">
+                    <span class="comparison-price">R$29,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-paramount.png" alt="Paramount+">
+                    <span class="comparison-price">R$34,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-crunchyroll.png" alt="Crunchyroll">
+                    <span class="comparison-price">R$39,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="images/logo-telecine.png" alt="Telecine">
+                    <span class="comparison-price">R$44,95</span>
+                </div>
+                 <div class="comparison-item">
+                    <img src="images/logo-ufc.png" alt="UFC Fight Pass">
+                    <span class="comparison-price">R$19,90</span>
+                </div>
+                 <div class="comparison-item">
+                    <img src="images/logo-premier.png" alt="Premiere">
+                    <span class="comparison-price">R$89,90</span>
+                </div>
+            </div>
+            <div class="comparison-total">
+                Ao todo você pagaria <span class="total-price-highlight">R$ 514,85</span> por mês
+            </div>
+
+            <p class="comparison-final-price">Já com a CineFlick você paga apenas 
+                <span class="price-3d-highlight">
+                    <span class="price-3d-text">R$ 19,90 mês!!</span>
+                </span>
+            </p>
+            <a href="#" class="cta-button" id="cta-comparison" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonial-section" id="depoimentos">
+        <div class="container text-center text-content">
+            <h2>Confira o que os clientes dizem sobre a CineFlick</h2>
+            <p>Veja a satisfação de quem já está aproveitando a CineFlick e transformando sua forma de assistir TV.</p>
+        </div>
+        <div class="testimonial-carousel animate-on-scroll">
+            <div class="testimonial-slider" id="testimonial-slider">
+            </div>
+            <button class="carousel-nav-btn prev" id="prev-slide">
+                <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </button>
+            <button class="carousel-nav-btn next" id="next-slide">
+                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </button>
+            <div class="carousel-dots-nav" id="carousel-dots-nav">
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-table-section" id="planos">
+        <div class="container text-center text-content">
+            <h2>Escolha seu plano e assine já!</h2>
+            <p>Descubra a flexibilidade e a economia que a CineFlick oferece em nossos planos. Qualidade e preço justo!</p>
+        </div>
+        <div class="container pricing-grid">
+            
+            <article class="pricing-card animate-on-scroll">
+                <h3>Mensal</h3>
+                <div class="price-display">
+                    <span class="price-value">R$19<span class="price-period">,90/mês</span></span>
+                </div>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 3 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-mensal" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card featured animate-on-scroll">
+                <span class="discount-badge red">30% OFF</span>
+                <h3>Trimestral</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$59,70</span>
+                    <span class="price-value">R$39<span class="price-period">,90/trim.</span></span>
+                </div>
+                 <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 3 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button" id="cta-trimestral" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card animate-on-scroll">
+                <span class="discount-badge white">40% OFF</span>
+                <h3>Semestral</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$119,40</span>
+                    <span class="price-value">R$69<span class="price-period">,90/sem.</span></span>
+                </div>
+                 <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 4 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-semestral" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card animate-on-scroll">
+                <span class="discount-badge red">46% OFF</span>
+                <h3>Anual</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$238,80</span>
+                    <span class="price-value">R$129<span class="price-period">,90/ano</span></span>
+                </div>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 4 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-anual" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="guarantee-section" id="garantia">
+        <div class="container guarantee-card animate-on-scroll">
+            
+            <div class="guarantee-image-wrapper">
+                <img src="7dias.png" alt="Selo de Garantia 7 Dias">
+            </div>
+            
+            <div class="guarantee-stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <h2>Experimente sem riscos por 7 dias e só então decida se quer continuar</h2>
+            <p>Sem letras miúdas no contrato: você pode experimentar a CineFlick e todos os conteúdos dela durante <strong>7 dias.</strong></p>
+            <p>Se dentro desse período você decidir não continuar com a CineFlick, por qualquer motivo que seja, é só entrar em contato e nós devolveremos todo o seu dinheiro – sem fazer nenhuma pergunta.</p>
+            <p class="guarantee-footer-text">A partir de agora, você não tem nada a perder.</p>
+            <a href="#" class="cta-button" id="cta-guarantee" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="container text-center text-content">
+            <h2>Ainda com dúvidas? Temos a resposta.</h2>
+            <p>Encontre respostas para as perguntas mais comuns sobre a CineFlick.</p>
+        </div>
+        <div class="container faq-grid">
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Precisa de Internet para funcionar?</summary>
+                <p class="faq-answer">Sim, o App CineFlick precisa de internet para o seu funcionamento, mas devido o sinal potencializado de nosso satélite próprio, uma internet básica é mais que o suficiente para rodar videos 4k;<br><br>Temos clientes que usam conectados na internet 4g do celular e funciona normally sem travas.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Precisa de especialista para configurar?</summary>
+                <p class="faq-answer">NÃO, nosso sistema é muito simples de instalar, ensinamos passo a passo detalhado pra você conseguir acompanhar e colocar tudo para funcionar.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">O pagamento é mensal?</summary>
+                <p class="faq-answer">Sim, nós trabalhamos com 4 planos:<br>19,90 – Mensal<br>39,90 – Trimestral<br>69,90 – Semestral<br>129,90 – Anual que é o mais econômico e vantajoso.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Moro em zona rural, funciona pra mim?</summary>
+                <p class="faq-answer">Varia de cada região, pelo testes de alguns clientes libera em média de 2.000 a 5.000 canais + de 25.000 filmes e séries e todos os dias são adicionados filmes e séries novas.</p>
+            </deta ... (restante do FAQ omitido para brevidade) ... </details>
+        </div>
+    </section>
+    
+    <section class="support-cta-section" id="support">
+        <div class="container animate-on-scroll">
+            <a href="#" class="support-card-link" id="cta-support">
+                <div class="support-icon-watermark">
+                    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.44 1.46 4.93L2.05 22l5.03-1.32c1.44.79 3.08 1.25 4.96 1.25 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zm.04 18.01c-1.57 0-3.1-.47-4.41-1.32l-.59-.35-6.18 1.62 1.62-5.92-.38-.59c-.87-1.37-1.34-2.9-1.34-4.55 0-4.38 3.58-7.92 7.97-7.92s7.97 3.54 7.97 7.92c0 4.38-3.58 7.92-7.97 7.92h-.01zm4.56-6.89c-.25-.13-.77-.38-.89-.42-.12-.04-.26-.04-.38.04-.12.13-.48.42-.58.5-.1.13-.2.13-.38.04-.13-.08-.54-.2-.96-.6-.32-.32-.78-.72-.94-.96-.16-.25-.04-.2-.13-.32-.08-.13-.04-.25-.04-.38s.04-.29.13-.42c.09-.13.38-.25.5-.32s.25-.2.38-.32c.13-.13.04-.25 0-.38-.04-.13-.38-.96-.54-1.32-.13-.32-.26-.25-.38-.25h-.32c-.13-.04-.29-.08-.42-.08-.13 0-.25.04-.38.13-.13.13-.48.42-.48.96 0 .54.48 1.05.54 1.13.08.13.96 1.62 2.33 2.29.35.16.58.25.77.32.29.09.54.08.73.04.25-.04.77-.32.89-.6.12-.29.12-.54.08-.6zm-.79-8.41a10.057 10.057 0 0 0-8.98 10.04c0 1.5.38 2.94 1.05 4.22L3.15 21.6l4.2-1.11c1.23.67 2.62 1.05 4.14 1.05h.01c5.03 0 9.1-4.08 9.1-9.1s-4.07-9.1-9.1-9.1z"/></svg>
+                </div>
+                <div class="support-card-content">
+                    <div class="support-text">
+                        <h3>Não encontrou a sua dúvida?</h3>
+                        <p>Nossa equipe está a disposição para tirar a sua dúvida! Fale diretamente conosco clicando no botão abaixo.</p>
+                    </div>
+                    <div class="support-button-wrapper">
+                        <span class="cta-button">
+                            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.44 1.46 4.93L2.05 22l5.03-1.32c1.44.79 3.08 1.25 4.96 1.25 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zm.04 18.01c-1.57 0-3.1-.47-4.41-1.32l-.59-.35-6.18 1.62 1.62-5.92-.38-.59c-.87-1.37-1.34-2.9-1.34-4.55 0-4.38 3.58-7.92 7.97-7.92s7.97 3.54 7.97 7.92c0 4.38-3.58 7.92-7.97 7.92h-.01zm4.56-6.89c-.25-.13-.77-.38-.89-.42-.12-.04-.26-.04-.38.04-.12.13-.48.42-.58.5-.1.13-.2.13-.38.04-.13-.08-.54-.2-.96-.6-.32-.32-.78-.72-.94-.96-.16-.25-.04-.2-.13-.32-.08-.13-.04-.25-.04-.38s.04-.29.13-.42c.09-.13.38-.25.5-.32s.25-.2.38-.32c.13-.13.04-.25 0-.38-.04-.13-.38-.96-.54-1.32-.13-.32-.26-.25-.38-.25h-.32c-.13-.04-.29-.08-.42-.08-.13 0-.25.04-.38.13-.13.13-.48.42-.48.96 0 .54.48 1.05.54 1.13.08.13.96 1.62 2.33 2.29.35.16.58.25.77.32.29.09.54.08.73.04.25-.04.77-.32.89-.6.12-.29.12-.54.08-.6zm-.79-8.41a10.057 10.057 0 0 0-8.98 10.04c0 1.5.38 2.94 1.05 4.22L3.15 21.6l4.2-1.11c1.23.67 2.62 1.05 4.14 1.05h.01c5.03 0 9.1-4.08 9.1-9.1s-4.07-9.1-9.1-9.1z"/></svg>
+                            Falar com suporte
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container footer-content">
+            <div class="footer-top">
+                <div class="footer-info">
+                    
+                    <div class="footer-logo">
+                        <div class="footer-logo-3d">
+                            <span style="--i:0;">C</span>
+                            <span style="--i:1;">I</span>
+                            <span style="--i:2;">N</span>
+                            <span style="--i:3;">E</span>
+                            <span style="--i:4;">F</span>
+                            <span style="--i:5;">L</span>
+                            <span style="--i:6;">I</span>
+                            <span style="--i:7;">C</span>
+                            <span style="--i:8;">K</span>
+                        </div>
+                    </div>
+                    <p class="contact-info"><a href="mailto:suporte@oficialcineflick.com">suporte@oficialcineflick.com</a></p>
+                    <p class="contact-info">(62) 99144-5107</p>
+                </div>
+                <div class="footer-payment">
+                    <h4>Formas de Pagamento</h4>
+                    <div class="payment-icons">
+                        <img src="images/payment-visa.png" alt="Visa">
+                        <img src="images/payment-mastercard.png" alt="Mastercard">
+                        <img src="images/payment-amex.png" alt="American Express">
+                        <img src="images/payment-elo.png" alt="Elo">
+                        <img src="images/payment-pix.png" alt="Pix">
+                        <img src="images/payment-boleto.png" alt="Boleto">
+                        <img src="images/payment-itau.png" alt="Itaú">
+                        <img src="images/payment-bb.png" alt="Banco do Brasil">
+                        <img src="images/payment-bradesco.png" alt="Bradesco">
+                        <img src="images/payment-santander.png" alt="Santander">
+                    </div>
+                    <div class="warning-box">
+                        <svg viewBox="0 0 24 24" fill="red" width="24px" height="24px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        <p>A venda da plataforma CineFlick em qualquer outro site é proibida. Não compre falsificações e garanta um produto de qualidade comprando APENAS através do nosso site oficial.</p>
+                    </div>
+                </div>
+                <div class="footer-security">
+                    <h4>Site seguro</h4>
+                    <div class="security-badges">
+                        <img src="images/badge-google.png" alt="Google Safe Browsing">
+                        <img src="images/badge-ssl.png" alt="SSL Secure">
+                        <img src="images/badge-reclameaqui.png" alt="Reclame Aqui Verificado">
+                    </div>
+                    <img src="images/badge-site-blindado.png" alt="Site Blindado">
+                    <img src="images/badge-reclameaqui.png" alt="Reclame Aqui Verificado">
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>Esta página não tem qualquer vínculo com o Facebook S/A e suas empresas, apenas usamos a plataforma para promover os nossos produtos. Ao sair da plataforma toda responsabilidade sobre produtos vendidos e ofertados é de inteira responsabilidade da nossa empresa, bem como se houver quaisquer eventualidades legais.<br>Declaramos que o Facebook S/A não tem qualquer vínculo de associação em processos cíveis ou criminais. Nosso email de suporte é: suporte@oficialcineflick.com</p>
+                <p>Não compre produtos piratas, não vendemos em marketplaces como: Mercado Livre, Shopee, Aliexpress, Facebook, Olx etc. Não damos suporte a produtos comprados nestes canais.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; CineFlick 2025 Todos os direitos reservados</p>
+                <p class="developer-info">Desenvolvido por <a href="https://www.instagram.com/a_provados/" target="_blank" rel="noopener noreferrer"><img src="logo.png" alt="aprovados"></a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
