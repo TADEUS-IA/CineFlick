@@ -26,7 +26,7 @@ const CONFIG = {
 
     // Links de CTA e Vídeos
     checkoutUrl: 'https://seu-checkout.com/produto',
-    supportUrl: 'https://wa.me/11942439819', 
+    supportUrl: 'https://wa.me/11943429819', 
     
     // [ATUALIZADO] Links dos Planos atualizados conforme o novo HTML
     plans: {
@@ -145,6 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // [REMOVIDO] populateCatalog() não é mais necessário
     initEventListeners();
     initScrollAnimations();
+    
+    // [NOVO] Inicia o ciclo de notificações de prova social
+    initSocialProof();
 });
 
 /**
@@ -406,6 +409,80 @@ function initFAQAccordion() {
  * não existe mais no HTML reordenado.
  */
 
+/* =================================================================== */
+/* [MODIFICADO] LÓGICA DO POP-UP DE DESCONTO (MODAL)             */
+/* =================================================================== */
+
+/**
+ * Exibe o modal de parabéns e configura seu link de destino.
+ * @param {string} checkoutUrl - A URL de destino para o botão de confirmação.
+ */
+function showCongratsModal(checkoutUrl) {
+    const modal = document.getElementById('congrats-modal');
+    const modalButton = document.getElementById('modal-confirm-button');
+        
+    if (!modal || !modalButton) {
+        console.error('Modal de parabéns não encontrado. Redirecionando diretamente.');
+        // Fallback: Se o modal falhar, apenas redireciona
+        window.open(checkoutUrl, '_blank'); 
+        return;
+    }
+
+    // Configura o botão do modal com o link correto
+    modalButton.href = checkoutUrl;
+
+    // Exibe o modal
+    modal.classList.add('visible');
+
+    // Função para fechar o modal
+    const closeModal = () => {
+        modal.classList.remove('visible');
+        modal.removeEventListener('mousedown', overlayClickHandler);
+    };
+
+    // Handler para fechar clicando no fundo (overlay)
+    const overlayClickHandler = (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    };
+    
+    // Adiciona listener para fechar clicando no fundo
+    modal.addEventListener('mousedown', overlayClickHandler);
+    
+    // Adiciona listener ao botão de confirmação para fechar o modal
+    // (O redirecionamento acontece naturalmente pelo href)
+    modalButton.addEventListener('click', closeModal);
+}
+
+
+/**
+ * Adiciona o pop-up de desconto e o tracking em um botão de plano.
+ * @param {HTMLElement} buttonElement - O elemento <a> do botão (ex: #cta-mensal).
+ * @param {string} planName - O nome do plano para tracking (ex: 'Mensal').
+ * @param {string} checkoutUrl - A URL de destino do checkout.
+ */
+function setupPlanButtonListener(buttonElement, planName, checkoutUrl) {
+    if (!buttonElement) {
+        console.warn(`Elemento do botão para o plano ${planName} não encontrado.`);
+        return;
+    }
+
+    buttonElement.href = checkoutUrl;
+    
+    buttonElement.addEventListener('click', (event) => {
+        // 1. Impede a navegação imediata
+        event.preventDefault(); 
+
+        // 2. Rastreia o evento (como já fazia)
+        trackEvent('Select_Plan', { event: 'select_plan', plan_name: planName });
+        
+        // 3. Mostra o modal personalizado (substitui o alert())
+        showCongratsModal(checkoutUrl);
+    });
+}
+
+
 /**
  * ===================================================================
  * MÓDULO DE EVENTOS E INTERAÇÕES
@@ -469,28 +546,31 @@ function initEventListeners() {
         ctaComparison.addEventListener('click', () => trackEvent('CTA_Comparison_Click', { event: 'comparison_cta_click', destination_url: CONFIG.checkoutUrl }));
     }
 
-    // 8. CTAs da Tabela de Preços (4 Planos)
-    const ctaMensal = document.getElementById('cta-mensal');
-    const ctaTrimestral = document.getElementById('cta-trimestral');
-    const ctaSemestral = document.getElementById('cta-semestral');
-    const ctaAnual = document.getElementById('cta-anual');
-    
-    if (ctaMensal) {
-        ctaMensal.href = CONFIG.plans.mensal;
-        ctaMensal.addEventListener('click', () => trackEvent('Select_Plan', { event: 'select_plan', plan_name: 'Mensal' }));
-    }
-    if (ctaTrimestral) {
-        ctaTrimestral.href = CONFIG.plans.trimestral;
-        ctaTrimestral.addEventListener('click', () => trackEvent('Select_Plan', { event: 'select_plan', plan_name: 'Trimestral' }));
-    }
-    if (ctaSemestral) {
-        ctaSemestral.href = CONFIG.plans.semestral;
-        ctaSemestral.addEventListener('click', () => trackEvent('Select_Plan', { event: 'select_plan', plan_name: 'Semestral' }));
-    }
-    if (ctaAnual) {
-        ctaAnual.href = CONFIG.plans.anual;
-        ctaAnual.addEventListener('click', () => trackEvent('Select_Plan', { event: 'select_plan', plan_name: 'Anual' }));
-    }
+    /* * [ALTERAÇÃO]
+     * 8. CTAs da Tabela de Preços (4 Planos)
+     * A lógica foi movida para a função helper 'setupPlanButtonListener'
+     * para incluir o pop-up de desconto.
+     */
+    setupPlanButtonListener(
+        document.getElementById('cta-mensal'),
+        'Mensal',
+        CONFIG.plans.mensal
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-trimestral'),
+        'Trimestral',
+        CONFIG.plans.trimestral
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-semestral'),
+        'Semestral',
+        CONFIG.plans.semestral
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-anual'),
+        'Anual',
+        CONFIG.plans.anual
+    );
     
     // 9. CTA da Seção de Garantia
     const ctaGuarantee = document.getElementById('cta-guarantee');
@@ -629,4 +709,78 @@ function initScrollAnimations() {
     });
 
     targets.forEach(target => observer.observe(target));
+}
+
+
+/* =================================================================== */
+/* [NOVO] MÓDULO DE SOCIAL PROOF (NOTIFICAÇÃO)                       */
+/* =================================================================== */
+
+/**
+ * Gera um número inteiro aleatório dentro de um intervalo.
+ * @param {number} min - O valor mínimo (inclusivo).
+ * @param {number} max - O valor máximo (inclusivo).
+ * @returns {number} O número aleatório.
+ */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Variável global para armazenar a contagem de visitantes estática desta sessão.
+let currentVisitorCount = 0; 
+
+// Constantes de configuração do Toast
+const TOAST_MIN_INTERVAL = 10000; // 10 segundos
+const TOAST_MAX_INTERVAL = 30000; // 30 segundos
+const TOAST_DISPLAY_TIME = 5000;  // 5 segundos
+
+/**
+ * Exibe a notificação (toast) de prova social.
+ */
+function showSocialProofToast() {
+    const toastElement = document.getElementById('social-proof-toast');
+    const visitorCountElement = document.getElementById('visitor-count');
+
+    if (!toastElement || !visitorCountElement) {
+        console.warn('Elementos do Social Proof Toast não encontrados.');
+        return; 
+    }
+
+    // 1. Atualiza o texto (o número de visitantes é estático, o título é fixo)
+    visitorCountElement.textContent = `${currentVisitorCount} pessoas estão nesta página`;
+
+    // 2. Mostra o toast (ativa a animação CSS)
+    toastElement.classList.add('visible');
+
+    // 3. Agenda o desaparecimento do toast
+    setTimeout(() => {
+        toastElement.classList.remove('visible');
+        
+        // 4. Agenda a *próxima* exibição (após o toast atual desaparecer)
+        scheduleNextToast();
+    }, TOAST_DISPLAY_TIME);
+}
+
+/**
+ * Agenda a próxima exibição do toast em um intervalo aleatório.
+ */
+function scheduleNextToast() {
+    const randomInterval = getRandomInt(TOAST_MIN_INTERVAL, TOAST_MAX_INTERVAL);
+    
+    setTimeout(showSocialProofToast, randomInterval);
+}
+
+/**
+ * Inicializa o sistema de prova social.
+ */
+function initSocialProof() {
+    // 1. Define a contagem de visitantes (entre 50 e 1000) para esta sessão.
+    currentVisitorCount = getRandomInt(50, 1000);
+
+    // 2. Agenda a *primeira* exibição do toast.
+    // Usamos um timeout inicial mais curto (ex: 7-12s) para o usuário ver a primeira vez.
+    const firstInterval = getRandomInt(7000, 12000); 
+    setTimeout(showSocialProofToast, firstInterval);
 }
