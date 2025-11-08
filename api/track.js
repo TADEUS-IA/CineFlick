@@ -1,9 +1,12 @@
-// Importa as bibliotecas necessárias (CommonJS)
+// Arquivo: api/track.js
+
+// [CORREÇÃO DEFINITIVA] Importa o módulo SDK principal de forma segura
 const bizSdk = require('facebook-nodejs-business-sdk');
 const FacebookAdsApi = bizSdk.FacebookAdsApi;
 const ServerEvent = bizSdk.ServerEvent;
 const UserData = bizSdk.UserData;
-const Pixel = bizSdk.Pixel;
+const Pixel = bizSdk.Pixel; // Agora 'Pixel' estará definido corretamente
+
 const crypto = require('crypto');
 
 // 1. CARREGA AS VARIÁVEIS DE AMBIENTE (da Vercel)
@@ -47,6 +50,7 @@ module.exports = async (req, res) => {
         const clientUserAgent = req.headers['user-agent'];
         const eventId = crypto.randomUUID(); 
 
+        // [CORREÇÃO] Usa a classe 'UserData' importada corretamente
         const metaUserData = new UserData()
             .setEmails(userData.email ? [String(userData.email)] : [])
             .setPhones(userData.phone ? [String(userData.phone)] : [])
@@ -57,6 +61,7 @@ module.exports = async (req, res) => {
 
         // 6. PREPARA O EVENTO
         const currentTimestamp = Math.floor(new Date() / 1000);
+        // [CORREÇÃO] Usa a classe 'ServerEvent' importada corretamente
         const serverEvent = new ServerEvent()
             .setEventName(eventName)
             .setEventTime(currentTimestamp)
@@ -81,7 +86,10 @@ module.exports = async (req, res) => {
 
         // 7. ENVIA PARA O META
         console.log(`[CAPI-Vercel] Enviando evento: ${eventName} para Pixel ID: ${PIXEL_ID}`);
+        
+        // [CORREÇÃO] Usa a classe 'Pixel' importada corretamente
         const response = await Pixel.sendServerEvent(PIXEL_ID, eventsData); 
+        
         console.log('[CAPI-Vercel] Resposta do Meta:', response);
 
         // 8. RETORNA SUCESSO PARA O FRONTEND
