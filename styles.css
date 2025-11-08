@@ -1,0 +1,1977 @@
+/* --- CONFIGURAÇÃO GLOBAL E VARIÁVEIS --- */
+:root {
+    --color-primary: #f9a826; /* Amarelo/Ouro (para destaques) */
+    --color-secondary: #1f1f3e; /* Azul Escuro (Fundo) */
+    --color-card-bg: #2a2a4a; /* Fundo do Card (levemente mais claro) */
+    
+    /* Cores do CTA (conforme referência) */
+    --color-green: #00E676; /* Verde Neon Brilhante */
+    --color-green-hover: #00C864; /* Verde mais escuro */
+    
+    /* [ATUALIZADO] A cor vermelha foi removida da paleta. */
+    --color-red-highlight: var(--color-primary); /* Vermelho foi substituído por Amarelo */
+
+    --color-text: #FFFFFF;
+    --color-text-muted: #a0a0c0;
+    
+    /* [ATUALIZADO] Novas fontes para um visual de "cinema" */
+    --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-title: 'Bebas Neue', sans-serif;
+    
+    /* Timings de Animação (Estilo Apple) */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: all 0.2s ease-out;
+    --transition-carousel: opacity 0.8s ease-in-out; /* Transição suave do carrossel */
+    
+    --nav-height: 80px; /* Altura da navegação */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* [ATUALIZADO] Fonte principal (corpo) */
+    font-family: var(--font-main);
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Previne scroll horizontal */
+}
+
+/* [NOTA] A classe .container já garante o espaçamento lateral ("sobra") */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* ======================================================= */
+/* NAVEGAÇÃO SUPERIOR (FLUTUANTE / STICKY)               */
+/* ======================================================= */
+.main-nav {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    background-color: transparent; 
+    transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+/* Estado STICKY (ativado via JS) */
+.main-nav.is-sticky {
+    position: fixed; 
+    background-color: rgba(31, 31, 62, 0.85); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    /* [ATUALIZADO] Fonte de Título */
+    font-family: var(--font-title);
+    letter-spacing: 1px;
+    font-size: 2.2rem; /* Ajuste para Bebas Neue */
+    font-weight: 400; /* Bebas Neue não usa 700 */
+    color: var(--color-text);
+    text-decoration: none;
+}
+.cta-nav {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0; 
+}
+
+
+/* --- TIPOGRAFIA E BOTÕES (HERANÇA APPLE) --- */
+h1, h2, h3 {
+    /* [ATUALIZADO] Fonte de Título */
+    font-family: var(--font-title);
+    font-weight: 400; /* Bebas Neue */
+    letter-spacing: 0.5px;
+    
+    /* [ALTERAÇÃO 3] Adicionado text-shadow para legibilidade */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem); /* Levemente maior com Bebas Neue */
+    line-height: 1.1;
+    margin-bottom: 1.5rem; 
+    /* [ALTERAÇÃO 3] Sombra mais forte mantida para o H1 */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+h1 .highlight {
+    color: var(--color-primary); 
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Levemente maior com Bebas Neue */
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+h3 {
+    font-size: 2rem; /* Levemente maior com Bebas Neue */
+    color: var(--color-text);
+}
+
+p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 300; /* Montserrat 300 */
+    color: var(--color-text-muted);
+    max-width: 600px;
+    /* [ALTERAÇÃO 3] Adicionado text-shadow para legibilidade */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.text-center p {
+    max-width: 600px;
+}
+
+.dark-text {
+    color: var(--color-secondary);
+}
+p.dark-text {
+    color: rgba(31, 31, 62, 0.8); 
+    text-shadow: none; /* Remove sombra em texto escuro sobre fundo claro */
+}
+
+/* CTA Principal (Verde) */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-green);
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+    font-weight: 700; 
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 30px; 
+    margin-top: 2rem;
+    transition: var(--transition-fast);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover, .cta-button:focus {
+    transform: scale(1.05) translateY(-3px);
+    background-color: var(--color-green-hover);
+    color: var(--color-secondary);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+/* Variação do botão (Dourado/Amarelo) */
+.cta-button-secondary {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+.cta-button-secondary:hover, .cta-button-secondary:focus {
+    background-color: #ffd95a; 
+    color: var(--color-secondary);
+}
+
+
+/* --- SEÇÃO HERO E VÍDEO DE FUNDO --- */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    overflow: hidden; 
+    padding: 0 5%; 
+    padding-top: var(--nav-height); 
+}
+
+.video-background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; 
+}
+
+#hero-video-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 (altura) */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 (largura) */
+    transform: translate(-50%, -50%);
+}
+
+.hero-section::after { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    max-width: 650px; 
+}
+.hero-content p {
+    max-width: 550px; 
+    font-size: 1.3rem;
+    color: var(--color-text); 
+    font-weight: 300; /* Montserrat 300 */
+}
+.hero-cta-main {
+    padding: 18px 36px; 
+    font-size: 1.2rem;
+}
+
+
+/* ======================================================= */
+/* SEÇÃO "COMO FUNCIONA" (VÍDEO + PLANO MENSAL)         */
+/* ======================================================= */
+.how-it-works-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #1a1a36; 
+}
+
+.how-it-works-section .text-content {
+    margin-bottom: 3rem;
+}
+
+.how-it-works-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-card-bg); 
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden; 
+}
+
+.video-player-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9; 
+    border-radius: 24px 24px 0 0; 
+    overflow: hidden;
+}
+#app-demo-video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.pricing-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 3rem 3rem 3rem;
+}
+
+.pricing-text h3 {
+    color: var(--color-text); 
+    font-size: 2.2rem; /* Bebas Neue */
+}
+.pricing-text p {
+    max-width: 450px;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.pricing-action {
+    text-align: center;
+    flex-shrink: 0; 
+}
+
+.price-tag {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+/* [NOVO] Destaque de preço com sombra e tamanho */
+.price-amount-green {
+    font-weight: 700;
+    font-size: 1.6rem; /* Maior */
+    color: var(--color-green); 
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra */
+}
+
+.pricing-action .cta-button {
+    margin-top: 1rem; 
+}
+
+/* BARRA DE COMPATIBILIDADE (LOGOS) */
+.compatibility-bar {
+    text-align: center;
+    max-width: 900px; 
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 3rem;
+    margin-top: 4rem; 
+}
+.compatibility-text {
+    max-width: 100%;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    margin: 0 auto 2rem auto; 
+    /* [ALTERAÇÃO 3] Adicionado text-shadow para legibilidade */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.logo-bar {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem; 
+}
+.logo-bar img {
+    height: 50px; 
+    width: auto;
+    filter: grayscale(1) opacity(0.7);
+    transition: var(--transition-fast);
+}
+.logo-bar img:hover {
+    filter: grayscale(0) opacity(1);
+}
+
+/* ======================================================= */
+/* NOVA SEÇÃO: "A TELEVISÃO DO FUTURO" (CARDS/CARROSSEL)   */
+/* ======================================================= */
+.catalog-features-section {
+    padding-top: 60px; 
+}
+.catalog-features-section .text-content {
+    margin-bottom: 4rem;
+}
+.section-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    max-width: 100%;
+    /* [ALTERAÇÃO 3] Adicionado text-shadow para legibilidade */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* [ATUALIZADO] Trocado .section-title-red por .section-title-primary */
+.section-title-red {
+    font-size: clamp(2.5rem, 5vw, 4rem); 
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-primary); /* Amarelo (substituindo o vermelho) */
+}
+
+.feature-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--color-card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+}
+.feature-card:hover {
+    transform: scale(1.03) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* [ATUALIZADO] Layout de imagem estática */
+.card-image-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    background-color: #1a1a36; 
+}
+.card-image-carousel img {
+    position: static;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* [REMOVIDO] Estilos do carrossel interno (dots, img.active) */
+
+/* [ATUALIZADO] Conteúdo do Card (alinhado à referência) */
+.feature-card .card-content {
+    /* [CORREÇÃO] Padding-top aumentado para 2.5rem */
+    padding: 2.5rem 2rem; 
+    text-align: center; 
+}
+.feature-card .card-content h3 {
+    font-size: 2.2rem; /* Bebas Neue */
+    font-weight: 400;
+    /* [ATUALIZADO] Cor do título do card (substituindo o vermelho) */
+    color: var(--color-primary); 
+    margin-bottom: 0.5rem;
+}
+.feature-card .card-content p {
+    font-size: 1rem; 
+    color: var(--color-text); 
+    font-weight: 400; /* Montserrat 400 */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; 
+    /* [ALTERAÇÃO 3] Adicionado text-shadow para legibilidade */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ======================================================= */
+/* NOVA SEÇÃO: TABELA DE PREÇOS (4 PLANOS)                 */
+/* ======================================================= */
+.pricing-table-section {
+    background-color: #1a1a36; 
+    padding-top: 60px; 
+}
+.pricing-table-section .text-content {
+    margin-bottom: 4rem;
+}
+.pricing-table-section h2 {
+    color: var(--color-text); 
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: stretch; 
+}
+
+.pricing-card {
+    background-color: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    border: 2px solid transparent;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-card.featured {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    transform: scale(1.05); 
+}
+.pricing-card.featured h3,
+.pricing-card.featured .original-price,
+.pricing-card.featured .price-value,
+.pricing-card.featured .feature-list {
+    color: var(--color-secondary);
+}
+.pricing-card.featured .feature-list li {
+    border-top-color: rgba(31, 31, 62, 0.2);
+    fill: var(--color-secondary); 
+}
+
+.pricing-card h3 {
+    font-size: 1.8rem; /* Bebas Neue */
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-primary); 
+    margin-bottom: 1.5rem;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    padding: 4px 30px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transform: rotate(45deg);
+}
+/* [ATUALIZADO] Badge vermelho agora é amarelo */
+.discount-badge.red {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+.discount-badge.white {
+    background-color: var(--color-text);
+    color: var(--color-secondary);
+}
+
+.price-display {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.original-price {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    display: block;
+    text-decoration: line-through;
+}
+/* [NOVO] Destaque de preço com sombra e tamanho */
+.price-display .price-value {
+    font-size: 3.5rem; /* Maior */
+    font-weight: 700; /* Montserrat 700 */
+    font-family: var(--font-main); 
+    color: var(--color-text);
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Sombra */
+}
+.price-display .price-period {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-left: 5px;
+}
+.pricing-card.featured .price-value {
+    font-family: var(--font-main);
+}
+.pricing-card.featured .price-period {
+    color: var(--color-secondary);
+}
+
+
+.feature-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+    flex-grow: 1; 
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+.feature-list li {
+    padding: 0.75rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    fill: var(--color-green); 
+}
+.feature-list li:first-child {
+    border-top: none;
+}
+.feature-list li svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+
+.pricing-card .cta-button {
+    width: 100%;
+    text-align: center;
+    margin-top: auto; 
+    padding: 14px 28px;
+    font-size: 1rem;
+}
+
+
+/* ======================================================= */
+/* NOVA SEÇÃO: LOGOS DE STREAMING + CTA                  */
+/* ======================================================= */
+.streaming-logos-section {
+    padding-top: 60px; 
+}
+
+.streaming-card {
+    max-width: 900px; 
+    margin: 0 auto;
+    background-color: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.streaming-card h3 {
+    font-size: 2rem; /* Bebas Neue */
+    font-weight: 400;
+    color: var(--color-text);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.streaming-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; 
+    margin-bottom: 3rem;
+    max-width: 700px; 
+}
+.streaming-logo-grid img {
+    height: 100px; 
+    width: 100px;
+    border-radius: 12px; 
+    transition: var(--transition-fast);
+}
+.streaming-logo-grid img:hover {
+    transform: scale(1.15);
+}
+
+/* ======================================================= */
+/* NOVA SEÇÃO: LOGOS DE ESPORTES (FUNDO AMARELO)           */
+/* ======================================================= */
+.sports-section {
+    background-color: var(--color-primary); 
+    color: var(--color-secondary); 
+}
+.sports-section .text-content {
+    margin-bottom: 4rem;
+}
+.sports-section h2 {
+    color: var(--color-secondary); 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Sombra mais sutil no fundo claro */
+}
+
+.sports-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+.sport-logo-card {
+    background-color: #FFFFFF; 
+    border-radius: 16px; 
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-smooth);
+}
+.sport-logo-card:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+.sport-logo-card img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px; 
+}
+
+/* ======================================================= */
+/* NOVA SEÇÃO: CHAMADA FINAL (COM FUNDO EM MOVIMENTO)      */
+/* ======================================================= */
+.final-cta-section {
+    position: relative; 
+    padding: 120px 0;
+    text-align: center;
+    overflow: hidden; 
+    background-color: var(--color-secondary); 
+}
+
+.cta-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url('https://live.staticflickr.com/3240/2334649248_f1da0e714d_b.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: kenBurns 30s infinite alternate ease-in-out;
+}
+
+@keyframes kenBurns {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(31, 31, 62, 0.85); 
+}
+
+.cta-content {
+    position: relative;
+    z-index: 3; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cta-content h2 {
+    color: var(--color-text); 
+    font-size: clamp(2.8rem, 5vw, 4.2rem); 
+    max-width: 700px;
+    line-height: 1.1;
+}
+.cta-content p {
+    font-size: 1.3rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+.cta-content .cta-button {
+    padding: 18px 36px; 
+    font-size: 1.2rem;
+}
+
+
+/* ======================================================= */
+/* NOVA SEÇÃO: COMPARAÇÃO DE PREÇOS (FUNDO AMARELO)        */
+/* ======================================================= */
+.comparison-section {
+    background-color: var(--color-secondary); 
+    padding-bottom: 100px; 
+    padding-top: 60px;
+}
+.comparison-card {
+    max-width: 1000px; 
+    margin: 0 auto;
+    background-color: var(--color-primary); 
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.comparison-card h3 {
+    font-size: 2rem; /* Bebas Neue */
+    font-weight: 400;
+    color: var(--color-secondary); 
+    max-width: 600px;
+    margin-bottom: 3rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Sombra mais sutil no fundo claro */
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 2.5rem;
+}
+.comparison-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.comparison-item img {
+    width: 100%;
+    height: 80px; 
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+/* [NOVO] Destaque de preço com sombra e tamanho */
+.comparison-price {
+    font-size: 1rem; /* Maior */
+    font-weight: 700; /* Montserrat 700 */
+    color: var(--color-secondary);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* [ATUALIZADO] Total agora é verde, conforme paleta. */
+.comparison-total {
+    background-color: var(--color-green);
+    color: var(--color-secondary);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.comparison-final-price {
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    /* [ALTERAÇÃO 2] Removemos o .highlight-green para dar lugar ao .price-3d-highlight */
+}
+
+/* ======================================================= */
+/* NOVA SEÇÃO: DEPOIMENTOS (CARROSSEL DE WHATSAPP)         */
+/* ======================================================= */
+.testimonial-section {
+    background-color: #1a1a36; 
+    padding-top: 60px;
+}
+.testimonial-section .text-content {
+    margin-bottom: 4rem;
+}
+
+.testimonial-carousel {
+    position: relative;
+    max-width: 500px; 
+    margin: 0 auto;
+    overflow: hidden; 
+}
+
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 0 10px; 
+}
+
+.testimonial-card {
+    background-color: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+.testimonial-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px; 
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.carousel-nav-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    transform: translateY(-50%) scale(1.1);
+}
+.carousel-nav-btn.prev {
+    left: -60px; 
+}
+.carousel-nav-btn.next {
+    right: -60px; 
+}
+.carousel-nav-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-dots-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+.carousel-dots-nav .dot-nav {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-text-muted);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0;
+}
+.carousel-dots-nav .dot-nav:hover {
+    background-color: var(--color-text-muted);
+}
+.carousel-dots-nav .dot-nav.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+
+/* ======================================================= */
+/* NOVA SEÇÃO: GARANTIA (EXPERIMENTE SEM RISCOS)           */
+/* ======================================================= */
+.guarantee-section {
+    background-color: #1a1a36; 
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.guarantee-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-primary); 
+    color: var(--color-secondary); 
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 3px solid var(--color-primary); 
+}
+
+.guarantee-image-wrapper {
+    margin-bottom: 1.5rem;
+}
+.guarantee-image-wrapper img {
+    height: px;
+    width: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+}
+
+
+.guarantee-stars {
+    font-size: 2.5rem;
+    color: var(--color-secondary); 
+    margin-bottom: 1rem;
+}
+.guarantee-stars span {
+    margin: 0 -5px; 
+}
+
+.guarantee-card h2 {
+    color: var(--color-secondary); 
+    font-size: clamp(2.2rem, 5vw, 3.2rem); /* Bebas Neue */
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Sombra mais sutil no fundo claro */
+}
+.guarantee-card p {
+    color: var(--color-secondary); 
+    max-width: 600px;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    text-shadow: none; /* Remove sombra em texto escuro sobre fundo claro */
+}
+.guarantee-card p strong {
+    font-weight: 700; /* Montserrat 700 */
+    color: var(--color-secondary);
+}
+.guarantee-card p.guarantee-footer-text {
+    font-weight: 600; 
+}
+.guarantee-card .cta-button {
+    margin-top: 2.5rem;
+}
+
+
+/* ======================================================= */
+/* NOVA SEÇÃO: FAQ (PERGUNTAS FREQUENTES)                  */
+/* ======================================================= */
+.faq-section {
+    background-color: var(--color-secondary); 
+    padding-bottom: 60px;
+    padding-top: 0; 
+}
+.faq-section .text-content {
+    margin-bottom: 4rem;
+}
+.faq-section h2 {
+    color: var(--color-text); 
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background-color: var(--color-card-bg);
+    border-radius: 16px; 
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600; /* Montserrat 600 */
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none; 
+    position: relative; 
+}
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+}
+
+.faq-item[open] .faq-question {
+    color: var(--color-primary); 
+}
+.faq-item[open] .faq-question::after {
+    content: '×'; 
+    transform: translateY(-50%) rotate(45deg);
+    color: var(--color-primary);
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 400; /* Montserrat 400 */
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 100%;
+}
+
+
+/* ======================================================= */
+/* NOVA SEÇÃO: CTA DE SUPORTE (WHATSAPP)                   */
+/* ======================================================= */
+.support-cta-section {
+    background-color: var(--color-secondary);
+    padding-top: 0; 
+    padding-bottom: 60px;
+}
+.support-card-link {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.support-card-link:hover {
+    background-color: #3a3a6a; 
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+.support-card-link:hover .cta-button {
+    background-color: var(--color-green-hover);
+}
+
+
+.support-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2; 
+}
+
+/* [NOVO] Esconde o <path> original (ícone genérico) */
+.support-icon-watermark svg path,
+.support-button-wrapper .cta-button svg path {
+    display: none;
+}
+
+/* [NOVO] Aplica o ícone real do WhatsApp como background */
+.support-icon-watermark svg {
+    width: 1em;
+    height: 1em;
+    /* Ícone real do WhatsApp (SVG otimizado e encodado) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='rgba(255,255,255,0.03)' d='M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224-99.6 224-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.2-8.7-94.3-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.support-icon-watermark {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 200px;
+    /* A cor é controlada pelo 'fill' no data:image/svg+xml */
+    color: transparent; 
+    pointer-events: none;
+    transition: var(--transition-fast);
+}
+.support-card-link:hover .support-icon-watermark svg {
+    /* Altera o 'fill' do SVG encodado no hover */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='rgba(255,255,255,0.05)' d='M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224-99.6 224-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.2-8.7-94.3-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z'/%3E%3C/svg%3E");
+    transform: translateY(-50%) scale(1.05);
+}
+
+.support-text {
+    flex-grow: 1;
+}
+.support-text h3 {
+    font-size: 2rem; /* Bebas Neue */
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+.support-text p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 100%;
+}
+
+.support-button-wrapper .cta-button {
+    margin-top: 0; 
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 14px 28px; 
+}
+/* [NOVO] Aplica o ícone real do WhatsApp ao botão */
+.support-button-wrapper .cta-button svg {
+    width: 20px;
+    height: 20px;
+    /* Ícone real do WhatsApp (SVG otimizado e encodado) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%231f1f3e' d='M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224-99.6 224-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.2-8.7-94.3-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* --- SEÇÃO CATÁLOGO E BUSCA --- */
+.catalog-section {
+    background-color: #1a1a36; 
+}
+.catalog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+
+/* --- ANIMAÇÕES DE SCROLL --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ======================================================= */
+/* RODAPÉ (FOOTER)                                         */
+/* ======================================================= */
+.footer-section {
+    text-align: left; 
+    padding: 60px 0;
+    background-color: #1a1a36; 
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr; 
+    gap: 2rem;
+}
+
+.footer-info .contact-info {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    max-width: 100%;
+}
+.footer-info .contact-info a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.footer-info .contact-info a:hover {
+    color: var(--color-primary);
+}
+
+.footer-payment h4, .footer-security h4 {
+    font-size: 1.5rem; /* Bebas Neue */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.payment-icons img {
+    height: 25px;
+    width: auto;
+    background-color: #FFF; 
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* [ATUALIZADO] Warning box agora é amarelo */
+.warning-box {
+    background-color: rgba(249, 168, 38, 0.1); 
+    border: 1px solid var(--color-primary);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+.warning-box svg {
+    width: 32px;
+    height: 20px;
+    fill: var(--color-primary); /* Ícone amarelo */
+    flex-shrink: 0;
+}
+.warning-box p {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    max-width: 100%;
+    line-height: 1.5;
+}
+
+.security-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+.security-badges img {
+    height: 50px; 
+    width: auto;
+}
+
+.footer-disclaimer {
+    border-top: 1px solid var(--color-card-bg);
+    padding-top: 2rem;
+    text-align: center;
+}
+.footer-disclaimer p {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-card-bg);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    max-width: 100%;
+}
+.developer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.developer-info a {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+}
+.developer-info a:hover {
+    color: var(--color-primary);
+}
+.developer-info img {
+    height: 20px;
+    width: auto;
+}
+
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1100px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem; 
+    }
+}
+
+@media (max-width: 900px) {
+    .feature-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sports-logo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+    .comparison-grid {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    .footer-top {
+        grid-template-columns: 1fr; 
+        gap: 3rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+    .logo {
+        font-size: 1.8rem; /* Bebas Neue */
+    }
+    .cta-nav {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2.8rem; /* Bebas Neue */
+    }
+    h2 {
+        font-size: 2.2rem; /* Bebas Neue */
+    }
+    
+    .hero-section {
+        padding-top: var(--nav-height); 
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .how-it-works-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .pricing-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+    .pricing-text p {
+        margin: 0 auto; 
+    }
+    .pricing-action {
+        margin-top: 2rem;
+        width: 100%; 
+    }
+    .pricing-action .cta-button {
+        width: 100%;
+    }
+
+    .compatibility-bar {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+    .logo-bar {
+        gap: 2rem; 
+    }
+
+    .catalog-features-section {
+        padding-top: 40px;
+    }
+    .section-title-red {
+        font-size: 2.2rem; /* H2 */
+    }
+    .feature-card-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .streaming-logos-section {
+        padding-top: 40px;
+    }
+    .streaming-card {
+        padding: 2rem 1.5rem;
+    }
+    .streaming-card h3 {
+        font-size: 1.8rem; /* Bebas Neue */
+        margin-bottom: 2rem;
+    }
+    .streaming-logo-grid {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .streaming-logo-grid img {
+        height: 100px;
+        width: 100px;
+    }
+    
+    .sports-section {
+        padding-top: 40px;
+    }
+    .sports-logo-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 1rem;
+    }
+
+    .final-cta-section {
+        padding: 80px 0;
+    }
+    .cta-content h2 {
+        font-size: 2.5rem; /* Bebas Neue */
+    }
+    .cta-content p {
+        font-size: 1.1rem;
+    }
+    
+    .comparison-section {
+        padding-top: 60px;
+        padding-bottom: 60px; 
+    }
+    .comparison-card {
+        padding: 2rem 1.5rem;
+    }
+    .comparison-card h3 {
+        font-size: 1.8rem; /* Bebas Neue */
+        margin-bottom: 2rem;
+    }
+    .comparison-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 1rem;
+    }
+    .comparison-item img {
+        height: 50px; 
+        border-radius: 8px;
+    }
+    .comparison-price {
+        font-size: 0.75rem;
+    }
+    .comparison-total {
+        font-size: 1rem;
+    }
+    .comparison-final-price {
+        font-size: 1.1rem;
+    }
+
+    .testimonial-section {
+        padding-top: 40px;
+    }
+    .carousel-nav-btn {
+        display: none;
+    }
+    .testimonial-carousel {
+        max-width: 100%; 
+    }
+
+    .guarantee-section {
+        padding-top: 40px;
+    }
+    .guarantee-card {
+        padding: 2rem 1.5rem;
+    }
+    .guarantee-card h2 {
+        font-size: 2.2rem; /* Bebas Neue */
+    }
+
+    .faq-section {
+        padding-top: 40px;
+    }
+    .faq-grid {
+        grid-template-columns: 1fr; 
+        gap: 0;
+    }
+    .faq-question {
+        font-size: 1rem;
+    }
+
+    .support-cta-section {
+        padding-top: 40px;
+    }
+    .support-card-link {
+        padding: 2rem 1.5rem;
+    }
+    .support-card-content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .support-text h3 {
+        font-size: 1.8rem; /* Bebas Neue */
+    }
+    .support-text p {
+        margin-bottom: 1.5rem;
+    }
+    .support-icon-watermark {
+        font-size: 150px;
+        opacity: 0.05;
+    }
+    
+    .footer-top {
+        text-align: center;
+    }
+    .payment-icons {
+        justify-content: center;
+    }
+    .security-badges {
+        justify-content: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .comparison-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing-grid {
+        grid-template-columns: 1fr; 
+    }
+    .pricing-card.featured {
+        transform: scale(1); 
+    }
+}
+
+
+/* ======================================================= */
+/* [NOVO] ALTERAÇÕES 3D E LEGIBILIDADE                     */
+/* ======================================================= */
+
+/* --- 1. LOGO 3D ANIMADA (RODAPÉ) --- */
+/* Remove o estilo do SVG antigo e estiliza o novo container */
+.footer-logo {
+    perspective: 800px; /* Ativa a perspectiva 3D para os filhos */
+    height: 80px; /* Altura do container da logo */
+    margin-bottom: 1rem;
+}
+
+/* Remove a regra específica do <text> do SVG que não existe mais */
+.footer-logo text {
+   display: none;
+}
+
+.footer-logo-3d {
+    font-family: var(--font-title); /* 'Bebas Neue' */
+    font-size: clamp(2.5rem, 5vw, 3rem); /* Tamanho responsivo */
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* Animação sutil de rotação 3D */
+    animation: logoAnimate 12s infinite alternate ease-in-out;
+}
+
+@keyframes logoAnimate {
+    0% { transform: rotateX(5deg) rotateY(-10deg); }
+    100% { transform: rotateX(-5deg) rotateY(10deg); }
+}
+
+.footer-logo-3d span {
+    display: inline-block;
+    color: var(--color-primary); /* Cor Amarela/Ouro */
+    position: relative;
+    /* Sombra 3D empilhada (cor escura -> cor clara) */
+    text-shadow: 
+        1px 1px 0px #A16A18, /* Sombra escura (dourado queimado) */
+        2px 2px 0px #A16A18,
+        3px 3px 0px #A16A18,
+        4px 4px 0px #A16A18,
+        5px 5px 8px rgba(0,0,0,0.5); /* Sombra de projeção */
+    
+    /* Animação individual de pulso/movimento */
+    animation: logoLetterAnimate 3s infinite ease-in-out;
+    /* Atraso da animação baseado na variável --i do HTML */
+    animation-delay: calc(var(--i) * 100ms);
+}
+
+@keyframes logoLetterAnimate {
+    0%, 100% {
+        transform: translateY(0) translateZ(0);
+    }
+    50% {
+        /* Move a letra para frente (Z) e para cima (Y) */
+        transform: translateY(-5px) translateZ(20px);
+    }
+}
+
+
+/* --- 2. PREÇO 3D (SEÇÃO COMPARAÇÃO) [ATUALIZADO] --- */
+
+/* Removemos o .highlight-green antigo */
+.comparison-final-price .highlight-green {
+   display: none;
+}
+
+.comparison-final-price .price-3d-highlight {
+    display: inline-block;
+    font-family: var(--font-title); /* 'Bebas Neue' */
+    font-size: 2.8rem; /* [ALTERADO] Tamanho aumentado */
+    font-weight: 400;
+    line-height: 1;
+    transform: rotate(-3deg); /* Leve inclinação */
+    
+    /* Animação de "pulso" para chamar atenção */
+    animation: pricePulse 1.5s infinite alternate ease-in-out;
+}
+
+.price-3d-highlight .price-3d-text {
+    color: var(--color-green); /* Cor Verde Neon (Mantida) */
+    position: relative;
+    /* [ALTERADO] Sombra 3D empilhada com o azul do site */
+    text-shadow: 
+        1px 1px 0px var(--color-secondary), /* Azul escuro do site */
+        2px 2px 0px var(--color-secondary),
+        3px 3px 0px var(--color-secondary),
+        4px 4px 0px var(--color-secondary),
+        5px 5px 8px rgba(0, 0, 0, 0.5); /* Sombra de projeção */
+}
+
+@keyframes pricePulse {
+    from {
+        transform: scale(1) rotate(-3deg);
+    }
+    to {
+        transform: scale(1.1) rotate(-2deg);
+    }
+}
+
+
+/* ======================================================= */
+/* [NOVO] MODAL DE PARABÉNS (POP-UP)                       */
+/* ======================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 31, 62, 0.85); /* Fundo azul escuro do site */
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    /* Controlado pelo JS */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--color-card-bg); /* Fundo do card */
+    border-radius: 24px;
+    border: 1px solid var(--color-primary); /* Borda amarela */
+    padding: 3rem;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Para conter os fogos */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+
+    /* Animação de entrada (zoom) */
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-size: 3rem; /* Bebas Neue */
+    color: var(--color-primary); /* Amarelo */
+    margin-bottom: 1rem;
+    line-height: 1;
+    animation: textGlow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary); }
+    to { text-shadow: 0 0 20px #fff, 0 0 30px var(--color-primary); }
+}
+
+
+.modal-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+
+.modal-content .cta-button {
+    margin-top: 0; /* Reset do margin padrão */
+    width: 100%;
+}
+
+/* --- Fogos de Artifício (CSS Puro) --- */
+.fireworks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1; /* Fica atrás do conteúdo do modal */
+}
+
+/* * Usamos 3 divs .firework.
+ * Cada div é uma explosão.
+ * Cada explosão é composta de 12 partículas (criadas com box-shadow).
+ */
+.firework {
+    position: absolute;
+    width: 6px; /* Partícula central (invisível) */
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: firework-burst 2s ease-out infinite;
+    
+    /* * Criamos 12 partículas usando box-shadow.
+     * Sintaxe: [X-offset] [Y-offset] [Blur] [Cor]
+     * Usamos as cores verde e amarela do site.
+    */
+    box-shadow: 
+        /* Partículas Verdes */
+        -60px 0px 0 var(--color-green),
+        60px 0px 0 var(--color-green),
+        0px -60px 0 var(--color-green),
+        0px 60px 0 var(--color-green),
+        -40px -40px 0 var(--color-green),
+        40px 40px 0 var(--color-green),
+        -40px 40px 0 var(--color-green),
+        40px -40px 0 var(--color-green),
+        /* Partículas Amarelas */
+        -20px 50px 0 var(--color-primary),
+        20px -50px 0 var(--color-primary),
+        -50px -20px 0 var(--color-primary),
+        50px 20px 0 var(--color-primary);
+}
+
+/* Posição e atraso de cada explosão */
+.firework:nth-child(1) {
+    left: 25%;
+    top: 30%;
+    animation-delay: 0s;
+}
+.firework:nth-child(2) {
+    left: 75%;
+    top: 40%;
+    animation-delay: 0.7s;
+}
+.firework:nth-child(3) {
+    left: 50%;
+    top: 60%;
+    animation-delay: 1.4s;
+}
+
+/* Animação da explosão (as partículas se afastam e desaparecem) */
+@keyframes firework-burst {
+    0% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 1; /* Metade da animação: opacidade total */
+    }
+    100% {
+        transform: scale(1.5); /* Partículas se afastam (aumenta o 'alcance' do box-shadow) */
+        opacity: 0; /* Desaparecem */
+    }
+}
+
+/* ======================================================= */
+/* [NOVO] SOCIAL PROOF TOAST (NOTIFICAÇÃO)                 */
+/* ======================================================= */
+.social-proof-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9000; /* Abaixo do modal (10000) */
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Controlado por JS */
+    opacity: 0;
+    transform: translateY(100px);
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.social-proof-toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.toast-icon {
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.live-pulse {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-green);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Animação do "pulso" verde */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 230, 118, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 230, 118, 0);
+    }
+}
+
+.toast-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-title {
+    font-size: 0.9rem;
+    font-weight: 600; /* Montserrat 600 */
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    text-shadow: none; /* Reset da sombra P global */
+}
+
+.toast-visitors {
+    font-size: 0.8rem;
+    font-weight: 400; /* Montserrat 400 */
+    color: var(--color-text-muted);
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    text-shadow: none; /* Reset da sombra P global */
+}
+
+/* Ajuste de responsividade para o Toast em telas pequenas */
+@media (max-width: 768px) {
+    .social-proof-toast {
+        /* Move para o centro inferior */
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        width: calc(100% - 40px);
+        max-width: 400px; /* Largura máxima */
+    }
+
+    .social-proof-toast.visible {
+        transform: translateX(-50%) translateY(0);
+    }
+}

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlick - Sua Nova Experiência de Streaming</title>
+    <meta name="description" content="CineFlick oferece os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta name="keywords" content="streaming, filmes, séries, canais ao vivo, 4K, HD, Full HD, assistir online, cinema, entretenimento">
+    <meta name="author" content="CineFlick">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cineflick.com/">
+    <meta property="og:title" content="CineFlick - Sua Nova Experiência de Streaming">
+    <meta property="og:description" content="Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta property="og:image" content="https://www.cineflick.com/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.cineflick.com/">
+    <meta property="twitter:title" content="CineFlick - Sua Nova Experiência de Streaming">
+    <meta property="twitter:description" content="Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Experiência sem travamentos e conteúdo exclusivo.">
+    <meta property="twitter:image" content="https://www.cineflick.com/twitter-image.jpg">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">CINEFLICK</a>
+            <a href="#planos" class="cta-button cta-nav" id="nav-cta">
+                Experimentar Agora
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="hero">
+        <div class="video-background-wrapper">
+            <iframe id="hero-video-iframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="hero-content container">
+            <h1>Sua Nova <span class="highlight">Experiência</span> de Entretenimento.</h1>
+            <p>Os melhores filmes, séries e canais ao vivo em 4K, HD e Full HD. Conteúdo exclusivo para você, sem travamentos e com a melhor qualidade.</p>
+            <a href="#planos" class="cta-button hero-cta-main" id="hero-cta-main">
+                Assinar Agora
+            </a>
+        </div>
+    </section>
+
+    <section class="how-it-works-section" id="como-funciona">
+        <div class="container text-center text-content">
+            <h2>Como Funciona?</h2>
+            <p>É simples, rápido e você pode cancelar a qualquer momento. Assista em qualquer dispositivo!</p>
+        </div>
+        <div class="container how-it-works-card animate-on-scroll">
+            <div class="video-player-wrapper">
+                <iframe id="app-demo-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="pricing-content">
+                <div class="pricing-text">
+                    <h3>Experimente nosso plano mensal.</h3>
+                    <p>Tenha acesso ilimitado a todo o nosso conteúdo premium, canais ao vivo e lançamentos exclusivos.</p>
+                </div>
+                <div class="pricing-action">
+                    <span class="price-tag">A partir de</span>
+                    <span class="price-amount-green">R$20,90 / mês</span>
+                    <a href="#" class="cta-button" id="cta-plano-mensal" target="_blank" rel="noopener noreferrer">
+                        Começar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container compatibility-bar animate-on-scroll">
+                    <h3>Compatível com seus dispositivos favoritos.</h3>
+            <p class="compatibility-text"> </p>
+            <div class="logo-bar">
+                <img src="https://images.icon-icons.com/2699/PNG/512/lg_logo_icon_170264.png" alt="LG">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Samsung_old_logo_before_year_2015.svg/2560px-Samsung_old_logo_before_year_2015.svg.png" alt="Samsung">
+                <img src="android.png" alt="Android">
+                <img src="apple.png" alt="Apple iOS">
+                <img src="roku.png" alt="Navegadores Web">
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-features-section" id="features">
+        <div class="container text-center text-content">
+            <p class="section-subtitle">O melhor conteúdo para você</p>
+            <h2 class="section-title-red">A televisão do futuro é pela internet, sem antenas e sem decodificadores</h2>
+            <p>Explore um universo de entretenimento sem limites, com uma variedade de conteúdo que se adapta ao seu estilo.</p>
+        </div>
+        <div class="container feature-card-grid" id="feature-card-grid">
+        </div>
+    </section>
+
+    <section class="streaming-logos-section" id="streaming">
+        <div class="container streaming-card animate-on-scroll">
+            <h3>Tenha acesso ao conteúdo de vários serviços de streaming em uma única plataforma!</h3>
+            <div class="streaming-logo-grid">
+                <img src="netflix.jpg" alt="Netflix">
+                <img src="disney.jpg" alt="Disney+">
+                <img src="hbo.jpg" alt="HBO Max">
+                <img src="prime.jpg" alt="Amazon Prime Video">
+                <img src="star.jpg" alt="Star+">
+                <img src="apple.jpg" alt="Apple TV+">
+                <img src="paramout.jpg" alt="Paramount+">
+                <img src="anime.jpg" alt="Crunchyroll">
+                <img src="tele cine.jpg" alt="Telecine">
+                <img src="cartoon.jpg" alt="Apple TV+">
+                <img src="combate.jpg" alt="Paramount+">
+                <img src="national.jpg" alt="Crunchyroll">
+                <img src="tele cine.jpg" alt="Telecine">
+            </div>
+            <a href="#" class="cta-button" id="cta-streaming-logos" target="_blank" rel="noopener noreferrer">
+                QUERO TER ACESSO A TUDO ISSO AGORA!
+            </a>
+        </div>
+    </section>
+
+    <section class="sports-section" id="esportes">
+        <div class="container text-center text-content">
+            <h2 class="dark-text">Para os fãs de esporte, a CineFlick é o lugar certo!</h2>
+            <p class="dark-text">Acompanhe os maiores campeonatos de futebol do Brasil e do mundo, além de transmissões de outros esportes que você ama, tudo em um só lugar.</p>
+        </div>
+        <div class="container sports-logo-grid">
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="premier.jpg" alt="Premier League">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="liga dos.jpg" alt="Libertadores">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="nba.jpg" alt="NBA">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="f1.jpg" alt="Fórmula 1">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="ufc 02.jpg" alt="UFC">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="nfl.jpg" alt="NFL">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="serie a.jpg" alt="NBA">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="serie b.jpg" alt="Fórmula 1">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="brasil.jpg" alt="UFC">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="libertadores.jpg" alt="Libertadores">
+            </article>
+            <article class="sport-logo-card animate-on-scroll">
+                <img src="sula.jpg" alt="NFL">
+            </article>
+        </div>
+    </section>
+    
+    <section class="final-cta-section" id="final-cta">
+        <div class="cta-background-image"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="animate-on-scroll">Com a CineFlick você assiste tudo quando e onde quiser!</h2>
+            <p class="animate-on-scroll">Cancele a qualquer momento.</p>
+            <a href="#" class="cta-button cta-button-secondary animate-on-scroll" id="cta-final-call" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="comparison-section" id="economize">
+        <div class="container comparison-card animate-on-scroll">
+            <h3>Isso é o que você pagaria se assinasse todas as plataformas de streaming:</h3>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <img src="netflix.jpg" alt="Netflix">
+                    <span class="comparison-price">R$59,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="disney.jpg" alt="Disney+">
+                    <span class="comparison-price">R$55,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="hbo.jpg" alt="HBO Max">
+                    <span class="comparison-price">R$34,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="prime.jpg" alt="Amazon Prime">
+                    <span class="comparison-price">R$19,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="star.jpg" alt="Star+">
+                    <span class="comparison-price">R$62,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="apple.jpg" alt="Apple TV+">
+                    <span class="comparison-price">R$29,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="paramout.jpg" alt="Paramount+">
+                    <span class="comparison-price">R$34,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="anime.jpg" alt="Crunchyroll">
+                    <span class="comparison-price">R$39,90</span>
+                </div>
+                <div class="comparison-item">
+                    <img src="tele cine.jpg" alt="Telecine">
+                    <span class="comparison-price">R$44,95</span>
+                </div>
+                 <div class="comparison-item">
+                    <img src="ufc 02.jpg" alt="UFC Fight Pass">
+                    <span class="comparison-price">R$19,90</span>
+                </div>
+                 <div class="comparison-item">
+                    <img src="premier.jpg" alt="Premiere">
+                    <span class="comparison-price">R$89,90</span>
+                </div>
+            </div>
+            <div class="comparison-total">
+                Ao todo você pagaria <span class="total-price-highlight">R$ 514,85</span> por mês
+            </div>
+
+            <p class="comparison-final-price">Já com a CineFlick você paga apenas 
+                <span class="price-3d-highlight">
+                    <span class="price-3d-text">R$ 20,90 mês!!</span>
+                </span>
+            </p>
+
+            <a href="#" class="cta-button" id="cta-comparison" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonial-section" id="depoimentos">
+        <div class="container text-center text-content">
+            <h2>Confira o que os clientes dizem sobre a CineFlick</h2>
+            <p>Veja a satisfação de quem já está aproveitando a CineFlick e transformando sua forma de assistir TV.</p>
+        </div>
+        <div class="testimonial-carousel animate-on-scroll">
+            <div class="testimonial-slider" id="testimonial-slider">
+            </div>
+            <button class="carousel-nav-btn prev" id="prev-slide">
+                <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </button>
+            <button class="carousel-nav-btn next" id="next-slide">
+                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </button>
+            <div class="carousel-dots-nav" id="carousel-dots-nav">
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-table-section" id="planos">
+        <div class="container text-center text-content">
+            <h2>Escolha seu plano e assine já!</h2>
+            <p>Descubra a flexibilidade e a economia que a CineFlick oferece em nossos planos. Qualidade e preço justo!</p>
+        </div>
+        <div class="container pricing-grid">
+            
+            <article class="pricing-card animate-on-scroll">
+                <h3>Mensal</h3>
+                <div class="price-display">
+                    <span class="price-value">R$20<span class="price-period">,90/mês</span></span>
+                </div>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 3 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-mensal" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card featured animate-on-scroll">
+                <span class="discount-badge red">30% OFF</span>
+                <h3>Trimestral</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$59,70</span>
+                    <span class="price-value">R$40<span class="price-period">,90/trim.</span></span>
+                </div>
+                 <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 3 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button" id="cta-trimestral" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card animate-on-scroll">
+                <span class="discount-badge white">40% OFF</span>
+                <h3>Semestral</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$119,40</span>
+                    <span class="price-value">R$70<span class="price-period">,90/sem.</span></span>
+                </div>
+                 <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 4 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-semestral" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+
+            <article class="pricing-card animate-on-scroll">
+                <span class="discount-badge red">46% OFF</span>
+                <h3>Anual</h3>
+                <div class="price-display">
+                    <span class="original-price">De R$238,80</span>
+                    <span class="price-value">R$130<span class="price-period">,90/ano</span></span>
+                </div>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Use 4 telas simultaneamente</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Mais de 60.000 conteúdos</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Qualidade SD/HD/FHD/4k</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Guia de Programação [EPG]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Smartphone/Tablet</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no TV Box/Chromecast</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista na Smart TV</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Assista no Computador</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Programação Adultos [Opcional]</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pacote Filmes e Série</li>
+                </ul>
+                <a href="#" class="cta-button cta-button-secondary" id="cta-anual" target="_blank" rel="noopener noreferrer">
+                    Comprar Agora
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="guarantee-section" id="garantia">
+        <div class="container guarantee-card animate-on-scroll">
+            
+            <div class="guarantee-image-wrapper">
+                <img src="7dias.png" alt="Selo de Garantia 7 Dias">
+            </div>
+            
+            <div class="guarantee-stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <h2>Experimente sem riscos por 7 dias e só então decida se quer continuar</h2>
+            <p>Sem letras miúdas no contrato: você pode experimentar a CineFlick e todos os conteúdos dela durante <strong>7 dias.</strong></p>
+            <p>Se dentro desse período você decidir não continuar com a CineFlick, por qualquer motivo que seja, é só entrar em contato e nós devolveremos todo o seu dinheiro – sem fazer nenhuma pergunta.</p>
+            <p class="guarantee-footer-text">A partir de agora, você não tem nada a perder.</p>
+            <a href="#" class="cta-button" id="cta-guarantee" target="_blank" rel="noopener noreferrer">
+                Adquira o seu agora
+            </a>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="container text-center text-content">
+            <h2>Ainda com dúvidas? Temos a resposta.</h2>
+            <p>Encontre respostas para as perguntas mais comuns sobre a CineFlick.</p>
+        </div>
+        <div class="container faq-grid">
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Precisa de Internet para funcionar?</summary>
+                <p class="faq-answer">Sim, o App CineFlick precisa de internet para o seu funcionamento, mas devido o sinal potencializado de nosso satélite próprio, uma internet básica é mais que o suficiente para rodar videos 4k;<br><br>Temos clientes que usam conectados na internet 4g do celular e funciona normally sem travas.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Precisa de especialista para configurar?</summary>
+                <p class="faq-answer">NÃO, nosso sistema é muito simples de instalar, ensinamos passo a passo detalhado pra você conseguir acompanhar e colocar tudo para funcionar.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">O pagamento é mensal?</summary>
+                <p class="faq-answer">Sim, nós trabalhamos com 4 planos:<br>19,90 – Mensal<br>39,90 – Trimestral<br>69,90 – Semestral<br>129,90 – Anual que é o mais econômico e vantajoso.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Moro em zona rural, funciona pra mim?</summary>
+                <p class="faq-answer">Varia de cada região, pelo testes de alguns clientes libera em média de 2.000 a 5.000 canais + de 25.000 filmes e séries e todos os dias são adicionados filmes e séries novas.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Quantos canais são liberados?</summary>
+                <p class="faq-answer">Você vai ter acesso a mais de 2 mil canais abertos e fechados, Netflix, Amazon Prime, Disney+, Max, Globoplay, e muito mais!</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Como vou receber o acesso?</summary>
+                <p class="faq-answer">Imediatamente! Após o pagamento ser confirmado, nossa plataforma enviará no seu e-mail o acesso para a plataforma, e todos os tutoriais de como usar em qualquer aparelho.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Em quantos aparelhos posso usar?</summary>
+                <p class="faq-answer">Nossos planos tem capacidade para 3 telas simultâneas.</p>
+            </details>
+            <details class="faq-item animate-on-scroll">
+                <summary class="faq-question">Estou com dúvidas, tem suporte?</summary>
+                <p class="faq-answer">Sim! Nós contamos com uma equipe grande de especialistas pronto para te atender a qualquer momento, quando sua compra for efetuada receberá o link para falar direto com nosso suporte!</p>
+            </details>
+        </div>
+    </section>
+    
+    <section class="support-cta-section" id="support">
+        <div class="container animate-on-scroll">
+            <a href="#" class="support-card-link" id="cta-support">
+                <div class="support-icon-watermark">
+                    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.44 1.46 4.93L2.05 22l5.03-1.32c1.44.79 3.08 1.25 4.96 1.25 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zm.04 18.01c-1.57 0-3.1-.47-4.41-1.32l-.59-.35-6.18 1.62 1.62-5.92-.38-.59c-.87-1.37-1.34-2.9-1.34-4.55 0-4.38 3.58-7.92 7.97-7.92s7.97 3.54 7.97 7.92c0 4.38-3.58 7.92-7.97 7.92h-.01zm4.56-6.89c-.25-.13-.77-.38-.89-.42-.12-.04-.26-.04-.38.04-.12.13-.48.42-.58.5-.1.13-.2.13-.38.04-.13-.08-.54-.2-.96-.6-.32-.32-.78-.72-.94-.96-.16-.25-.04-.2-.13-.32-.08-.13-.04-.25-.04-.38s.04-.29.13-.42c.09-.13.38-.25.5-.32s.25-.2.38-.32c.13-.13.04-.25 0-.38-.04-.13-.38-.96-.54-1.32-.13-.32-.26-.25-.38-.25h-.32c-.13-.04-.29-.08-.42-.08-.13 0-.25.04-.38.13-.13.13-.48.42-.48.96 0 .54.48 1.05.54 1.13.08.13.96 1.62 2.33 2.29.35.16.58.25.77.32.29.09.54.08.73.04.25-.04.77-.32.89-.6.12-.29.12-.54.08-.6zm-.79-8.41a10.057 10.057 0 0 0-8.98 10.04c0 1.5.38 2.94 1.05 4.22L3.15 21.6l4.2-1.11c1.23.67 2.62 1.05 4.14 1.05h.01c5.03 0 9.1-4.08 9.1-9.1s-4.07-9.1-9.1-9.1z"/></svg>
+                </div>
+                <div class="support-card-content">
+                    <div class="support-text">
+                        <h3>Não encontrou a sua dúvida?</h3>
+                        <p>Nossa equipe está a disposição para tirar a sua dúvida! Fale diretamente conosco clicando no botão abaixo.</p>
+                    </div>
+                    <div class="support-button-wrapper">
+                        <span class="cta-button">
+                            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.44 1.46 4.93L2.05 22l5.03-1.32c1.44.79 3.08 1.25 4.96 1.25 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zm.04 18.01c-1.57 0-3.1-.47-4.41-1.32l-.59-.35-6.18 1.62 1.62-5.92-.38-.59c-.87-1.37-1.34-2.9-1.34-4.55 0-4.38 3.58-7.92 7.97-7.92s7.97 3.54 7.97 7.92c0 4.38-3.58 7.92-7.97 7.92h-.01zm4.56-6.89c-.25-.13-.77-.38-.89-.42-.12-.04-.26-.04-.38.04-.12.13-.48.42-.58.5-.1.13-.2.13-.38.04-.13-.08-.54-.2-.96-.6-.32-.32-.78-.72-.94-.96-.16-.25-.04-.2-.13-.32-.08-.13-.04-.25-.04-.38s.04-.29.13-.42c.09-.13.38-.25.5-.32s.25-.2.38-.32c.13-.13.04-.25 0-.38-.04-.13-.38-.96-.54-1.32-.13-.32-.26-.25-.38-.25h-.32c-.13-.04-.29-.08-.42-.08-.13 0-.25.04-.38.13-.13.13-.48.42-.48.96 0 .54.48 1.05.54 1.13.08.13.96 1.62 2.33 2.29.35.16.58.25.77.32.29.09.54.08.73.04.25-.04.77-.32.89-.6.12-.29.12-.54.08-.6zm-.79-8.41a10.057 10.057 0 0 0-8.98 10.04c0 1.5.38 2.94 1.05 4.22L3.15 21.6l4.2-1.11c1.23.67 2.62 1.05 4.14 1.05h.01c5.03 0 9.1-4.08 9.1-9.1s-4.07-9.1-9.1-9.1z"/></svg>
+                            Falar com suporte
+                        </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container footer-content">
+            <div class="footer-top">
+                <div class="footer-info">
+                    
+                    <div class="footer-logo">
+                        <div class="footer-logo-3d">
+                            <span style="--i:0;">C</span>
+                            <span style="--i:1;">I</span>
+                            <span style="--i:2;">N</span>
+                            <span style="--i:3;">E</span>
+                            <span style="--i:4;">F</span>
+                            <span style="--i:5;">L</span>
+                            <span style="--i:6;">I</span>
+                            <span style="--i:7;">C</span>
+                            <span style="--i:8;">K</span>
+                        </div>
+                    </div>
+
+                    <p class="contact-info"><a href="mailto:suporte@oficialcineflick.com">suporte@oficialcineflick.com</a></p>
+                    <p class="contact-info">(62) 99144-5107</p>
+                </div>
+                <div class="footer-payment">
+                    <h4>Formas de Pagamento</h4>
+                    <div class="payment-icons">
+                        <img src="https://download.logo.wine/logo/Visa_Inc./Visa_Inc.-Logo.wine.png" alt="Visa">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAADFCAMAAACM/tznAAACDVBMVEX////LAAD/mADl5eXm5ubk5OTj4+P09PTw8PDs7Oz29vb5+fnp6en8/Pz/lgDIAAD/nAP3ngvYHAH/pwcAAFgAAFsAAFTrcQj/qwr3mgvkWQYAAF3XPALYCQD/oQD/owX9jgTkDgAAAGUAAE90dqifAS3ruq7PKCXoOADvewPv3sj99/LeOQPZAAD88OkAAGj/pyuoqcbpysn/68712NP30bb53MX/sgBCAEvrp5qGh7bRPjXvwcAlAFIAAEjMzeHe3uqXmLrR0uO6vNgADGOsCCLgdm/Dbi3Iey766Obq29Tgk4vbY1vWSUfOJSDmqqP83LX9zpf7voj9sVf9qz77u1n3zaLZWlPba2LjiX/eeHP7x4n+niz8wXT6t2Pu3M7vx7PnkXniUwK/Bg/ss7HnigC3VlSQNjM5IXOYABZ0Kkj81Z9VDzpITowPHnj0YgDoPjInN4iqgpUgADmGADnpU0dSACllYpr/vWP1n0z2tY6+qb2EMECgTCttKmHXcxSvDw8hGmBJSH/UtK1jREyvNBzWZyjlyNGGDiUmNHVGLWChAAB/fZtkMFNqABVqAD2WV2jQe3xwADM+ADVWJmRfAEtjZpuSg5inaYmiTl9ePWZfY4r2pWKZDCI2Q4thCCelaS+uTgCVncuEbZM9ADC3bi2WUETRoKibfqCKLieoBi3Niim5WC3ZjBqhN0L4uFSBAAAacklEQVR4nO09CVsb17UjaYRG0mxGiyXL2lisBllisdgMGDBgW+ybMRhj3IJf68bw0jqJk5ekMaR9MU1SWrt232tisr309blJfuO724xGaAQjzZUInzn+zIyORnPuOffcc8895y4MA8BpY20OcBXsLGuHCA4gOAUhaBCMgnAAhJMgbG6MYHmIYAHCBa4uBcFrEKyCgOTcNkLuCOkjxIkATgRgt9lRAWpsthoFgegpCA4gnAoCFUCLcBMEomezY4SrxmZHr2cBAhbADRA2VABCzq0ld0T0bYwTgMvtdjvAlQNXtxbhVBAOcHUpCM4QQn1ZAaIouaOgzwAh2IkEbViFCMKlIHiAQBIECFZBOAiCqLCNqDBBcADBKQhBg2AUhAMgnAriKOmjJnOM27Bp+oUaYNPUAKtUiVIDtv01UENqwK7UgNpkC9qwgrCTNmxT2vCR0mc4AA6Xy+WAN+DqKgPhOBDh0CBcByKOgj4SQoEVPlCCRa1wyTVYtBeoHn0bY7YNHXUb/ik4QnZSAJtSAFwDCoK34QK47UoBCDm3nY4AzNBnGQGAk+d5B7i6WZ5nIYIDCA7e6CLc4OoACCe4MgDBqwjwNgZceRdAuOCNLkIlB66oAEdIn2fsdjtuQzV2xZOyE0/KrnhSduJJ2RVPyl7jIAjShjFC0CBIkyUIDiCcCkIg5FTEUdI/8QNeeQG88k1AwFaBdTA5I8RwLM9yTM4I5SOAzWEcLLE5CMFoENCyuQDCxeaMUD6CkGMQOeZo6SOZv9rdIIUCHGcbUiQgUp4rajfqih4aEKkefRuVwVDR0YlLF0GdnBn6FRoO20iFqREKOwlIVGk4bJz+iR9gMiRWUANGQ1JFNaDK9A8OinLGY5C6QUmX8rIyg6JVoI+FQDUsbSseljbaC1SP/klA5EQAlVNBe04F7UfRBAzRtxWOBu0Hjcbs+AWHjsZq7DX5ozGAMDgarDL9Ez/glReAraANHavsrmn6zHHP7pqlz2AVOr7ZXZP0TxwhRQOObXbXJH0b44AAowTkylFHVPbtZunTCYiYC2kdKf0TP0CJIheGle25sLL9KMLa1aGPcqfadKugTaY6ldyxml3NSyYrCE4PwSkItza7qyVXgDgK+gxuQ8c3tWWSvp2hoMKFbRgi1MSTiTbMgCdQmTnw0+MSEAGKy6az2UwbhEwmk20bBVpXsgAQv8nRpqamCwDApWk0KSCJVCQgUqiCBeNpoyrY2z12c3wiYbFYJEkCfyZ7xhfHpjJJRgBlN9oEWJ5dnZ6ZnZtviciyVRStstzSMjc7M90OvqHbBIAQWPQCcHUS+bBIYGxOgvkIJ7hBL2CJBBVEcnRsPDFp0QMpMTGWTTKF5Arp8zybXrgOOBcVsFqt5E6OtFxfGAUqpUtfRSgtRoAIQduECsgd0A3uV6EDuyEgoszUuEXS5Z7IQLox1Zt2HtoNdizMRRS+9wPGz890cAytbpCKIwTs3dSiftXnw+SNsVH00mJtWJieO6XPe54YTs0tuBmhQgGR0rO7XNuSdFDd5+mB5WaG0Q+IsHx6OWI9jHtFE+TlDsCE+YCINmWqn0wtiiCZWVd6LGGUfSyCsYxLJ7vrTi+3GOJekYG8vOo2nUxmsAqVn11lR5fWSuCewJUskz8ctjmSMy2ycfaxCG6tJIHDbG44bLYNTfWUUvuqFiSmBK0NYW0LpdR+TgQtMzaebkAkLyTF6CI0GpBcLIN7DItZwaZoADt621o6+0gE8lyGLaoBBSExHQ3AUUKORAk5zlmAwBFGjoQctQjhnBHLXxSmeIXctFxG9StKEFlw4AJxOJmcK2EOoTBTiNDtBQymlpI3zbAP4EoSGhW2ZrnExr9fBCujbPm9QPl+wOqNclp/HkgZxs6vltP680UQXWVVk1WiDdN6gqUJIFNS31cE1ta5plMm2YcSkO9UeYqMzd1rqvmrIP08YJ5/KIEZPSNuZNUYbjIlZ1enKFQ/5L9WpsA+lIA4W1NOdrncgEgvFfYt0nlPlIYCWJEOVDEgQov/Wmr8Qx1YrtYMEaaXkv6f90RyI37zErAuI6NmJLtck5sh4nQ6eeA3CCi7KoAbLcJJEE4HuHHxGMG00bF/lvOeTk/AEwiA/xEqltDaDsoOPByBI8y4+WIIhV13rhtUwvCsrXhcHvUC6QQd/i21Z88rINKRQHCVr0JAZJFOA7DAGBEYG8PIIS1jILbU2EoVQMm5wTFq/GtFcTZAgX8ggXlWMVkGs8s4O2wcXHcqwT+A0x46lnDBVRpD+r1AcQk6KRnAQjhFxSUSW5rYigZErtBSgFr4v9ai/K2Vaqk1gko6Qm202D8VLACRjlcszhzSi+msHTacXU32UBJALCDvByrcQwHcGnUayy67Sl47zE/RYV8630nNA9aRwLKR7LK9jKmy7CgtBRBzaa88oCMAOV0ZR8hNTQHOdEajHj2gZAWWTa0dPmA8TUkBpDOvndYHU7HBnACCq6zh7DbuBUh2Vdg/HwEhlOyqo7tCPlAOfkHJG1pmimS385PJJXaDror5QDmg0xmILWm9Jqz6AXndoGEB8OuV5186TSVCaBU7KhAQ4c1mAYwALXcwoOcK6y+Z0Un36iZT3aNVaAHS2mt0YmRiumgyex/C+HA4Q8kE1p45CO7S6glZ6muHx+nwL53u1HUBqHoCcEhEJSCiTYxQUgBJjOh7gYW+oAnnUIy0G8puw6/2NQp3ng1wKwh3myIAiUD+J8PiqY0aZCEm3vpi5YtbIrgphXMiR3HBqA0w2As4bxIWb5zDgCNjiXPKR6MK8IvCcaDeqDAWXG5KJ93JdLpjJWKYfVmcaQcAs+23HQYXThr0A/gJUuFTDIYMmgp5jnxiDDgJUgLC6VOHACi8LMeW3YwK7qBBHZBjd9PwB2mgAR4H3YBIG4qFh0cu1ZBSIYR3QCmkAQ3ozrRlMr09tYdALBqR/22V0cCqQf7Fzl/+ChVoIQZUKM0WFUChJ0hEok68UwWgjAUcOBmWavQqNZNJSPF7zx1KIf9ymBGQ1lDlZHJzKfUtx9rpzru/7tfyz7we07TvotxDAdzfQMVbiUFnsLgA8jTA2GjQjQUQv78p5JpA/NKgUsb0OObIkuhJWDR8gdvJxCS4hF/WIXuznrOePRMTk1KeaUXXfw90DeXxzywD5mKxmNhyq+WUGMM2MQZBlMFHGTZ9dCt21n+KfjAnkgGRkdGgMT/AjUeC8fsbSqkyidTa5mXlU7ZHsvQs9WbTALIZxWBKE+cQBqDeePwbVDmZ7m5kTaSxbDqZTGeWyKM3uwGMSz3n0r99cJG8lBu6eHEIFGEFNOn5hTSGjttIAjMLAN6JtXQkQXXH5jvAN+0t1vpW+DvhFhTAdYZqQASng8J+pXBMpif15p5aSRlLaklTZxnEZKI3h3nrbfWXi4D98Wzeo+EwUqzFCaCXm5v4C1drc73XX+97uPpOxJrWvHwaTiZNwrvb7yaZJDCa7fgL4T+wANJIAPMGBWAoJmh3IY7Ckh9pJ0wnZHvi9yFPeKplr+Xee5oyMlkLmgCUk8gbl1rJbRq0kSvJ3FdJaFv7IEVhAohliDzoarh/9dr37w/XeeW7H/yO0768Xf4QI+bBa2ZE+YL6zUVkPDrQ9PIWeGsgJmgsKpxECpB6VIcoDA0APnpGfKAU/DdIs7s/2cpvuL0WaT3vY51i2IBsFpPaR+9I8cd7sFAuiN7eHkDYj04HApFAp+fqLz2/r9tw5b38nT88hIgk+CPc/s+PmX3wOjKKLZxOVNhZGBWGcHg3mMQ28PEOKt0gFMBbL54D3i9jzR6/t5NfiGztH7W1dk7aygngE6L/TtyHJHvib6vWdGAL27GkDKcOApcg4LF+5v80/+XTf1Kfv/B9w37+kdEEAnDaDOUFShLA7jbiqsEGBfAA6uogrvg33tzgW59v7Ozs7DWg2kr+GRsI9+De3sbGX966t41Exw3UdK9hdvo3hrcwH2OpB0r7YPp9+HYmpnRvkbtd/sGBiw9/A1/eimxF+oEqgNE+LGdX/+BloiaCIoAypsoWzQ2SJtCFyu7aAbj0xCaoU1czrtjw7nDdpb6+rr4+Xz2uks/xZRBgvV4p/gRzPVj/NPxXVKyBB7t9Pj+SSq/FR9TD2f8p9q2S76odvvxhc6ju0rNfP+sK+bwh9KCrjgiM7/8U3w089PsvNeAuOjmnaoDhtcOHAtKAcG0XUviBXwE1Sf/5ObzdROVdtTx5PLJmCYOHHtc/RyLcxgIYgy4QcBnwL5m/PX2xhu8WLSmpqx7VZO/aJhYAuxcKDaO7jlx8OPLh+1d/AC5yMPhhl7ceKVzNJtY7bie0hegz//X11V/7vPgtqBMAAnAbyw4bCojYkAaE1/xI3v11QAOS25CRhm3UjqekcNxi6Rm/Odbd/U9UjIHN57g6liax7iBWhfF4vAt3VeMTE2/99za6732xgdl4/rTL+xt0N63x8SKBKLAH795efv2jwYvowaEd8nwX8XzSosfT+XtcOiYd0fQCB6wdLsUPYNNIAx55kefT76+B0gdfJv+O63kJTvSYyiheIhRAs+IyZdBqEtx/ZkFv2ocKLyCvZgD94tzjz5EYhXthixf/bEHj8gJjGPtiWusJXPwc0/hd8DNsDJZjVjHwoR8XpilmVQRQ3tphnTlCLIc0oLEO9Xnv1QM5DMCSrhPNBm7Szbyujfn4QUjtF4GvszaMl9QlUi/2dRcAuu/jt5yzhBM+LICZnABEORibFvJ+8DkWQId4tw+pm/AFeDwiEgFg4RkWgLJU16GXTFUQTgfqBN7ETtpv/UAATqgMY32Iy+S45WZ+EQFT3m21H0zWNm6hm15L+Mkesx+WiBhvSkDHHu4TgBg99WXrvh8QAzsjf1WHaKTnoevnwRYFDYWQJ1jS2mH7wWt3sRF8G1fPj8TaMOk/YH3OvvEj8aoGWgfx+ODnj4b92+pQ4dwL3LTXpdRugQCS43245ONSeMS3rwmI0egz4kRzQ62t2IrvIIm4ZyNfhdyqAKxRbCGZ66QJ8DTXDifhuqAwHqYI9xTtvvMJHhz2Pv4GfdHaDJx3zMF4/PGw19twmfRMu7hixyzhZ1gAQw0qXJGwIqd7oACwpDoUAcjBz3BH49gA78Z1fLkZSTZ9S/7HMHp/Fth9MRrEaEYmTaAkP+AwAThg+GMNW7LkJ4oA3nqMi/vRU1TGyw8aXzYSU5yQ4iNbw/7hQVRFjj3cCdywWLqwAAbrvRh83tTIFnJhMpPABoTq0NfCF9gREj1f+XCD7/76WpcPOwn9XvT8hVOR97EAoNcgBr4m/Q4OqpUmgEPXDjtA0eMjPkS/QxFAOvwE03zPhy6LqVTcUoerAXZ94Sd9ITx8dO0hscCG1IWN4PonIwQexYkYYchhzRdCNJgmEvoI9nnRG5Lz0c7fhYj2YMWfjgEBYDsDm738GW6YHaTt6DYBndniBofDYxIYCWBlHBvxYQFMpZ7ixvtbzMFNSYr/CbtjSRTfiNfu+lGLcOFQFcCmdofx7XiKQGLiTdxq1kFPE97yEi93eh5GPMTZb4axAN6VI324F2Za0dAJGErP+yHF94mJd8lwdIHoDooHqNltTS9gI73AAWuHdQIi6xbgzm6gzxMjWM2TV1KXEP3kQyyAzKSU+hYPcDoSU1cScPy8jdjlSL1mlq58SzhMd08AGfVcuZNc+h9s5WBsJL7r/ZwE3ZJNCwsdaaY1hJ+fEb9rJr1BA4n7xCIfhIiBTHd0KI4CDJ9AAawwNAMiMCQW7/oUtb2eET8qU8YiYb5cXT5S5l4lzjE2gYqlFGoAO/0QBv3P1YAvtpCTOAIADYQlPDIcyh9XD14iQ8H0x6RbFTaxIFrEyHe+h/kDZfDtnChGgB1EUZJy1w4XrhpzZxKWFLbBaSnhQ0Z/KvWoGfGVfdu/L4rHNHyb9/FbVQDJpT7vYP6za/hLPOAM93l3tDy5G+q3HfnPC3joJMiibO3y5sdPQfHeFedXrgfFGAosl7t2uHAxcXoCjATw0EVaq0eKl4i/2ENSvfPYt60WYAC9dvu5tlDdj/1qPOitJ8P1eY7N6hoWYxoH3da83o3c3BWG2/P61MfdqFd1YzsLg/+Bf9TVKaJlBtBdUzC4snL9uijnZ7Y0qa587tBPDawc5RZT97YQYWANkCSyUvxL3AK7Hw2HlFrt/xV6aFvDI/e3+IvQMClnVkp1DYcuaoIl6/c2sBiRAKSffdXs38kplOPvPu+wUsuDyNY4t1HT6QD+fyQY8pGBEfDNcTzMGly5/c51cc5lM7ZyFAvg8MzQWOrx1mBra+vUIhjZPGxtfe+GFO9qaIWYG6lnw6GH/ZzL3d+wVTc4OPje/25tXBwaYMFoc2CoYWctJQ37doaA0PmPF0Ed9w37dxr6kWbx/f9848u91qGhoY+v4EDy6c4P6ryhh60D8OuBj1eu+YAELoJPA3cehvZav7nz+j83wONDbe9A9zdwtc473HCZc1xu+GPoYuvgYNuKKM5fvx6MLbhNbaZWsHrc5gRcev1+7ycpi2UL3NxLWeLDIb/ff0kKh+F39XXNoUuPgP/n9z1dG/bBZ4GX46t/Agb+KaAj9XWbzaEncYuUir/ZFQJPNdc11/n8T+LAX4LvDeP4eCzSefWzOq/f27y5Wef9P7nzu1AoBD41//J0fcjn974WuFQHnvd/jf2dwLW/wneF+j64GoIkz0RElECRL7gNTpY2aAM4R89IIwRYyJeNjS9hbSHEyzAMa4/sPn36pBG4f40vXzaOWEYa39y9D+DJy0QcxQMSu3/tAp+gRy2FU4nG3ad9XV33d1+OhMPoLY1rKGUk1UaB93fqXx/sdnU9+/H7fwVlq+eH73ef7X7/r4h8DYIcuYogRrKonh+u/bj747UfAj9chV/fJW7QPHf4/gEuZTO1or1AngTBYBUCslSaK76zhOPxcDwMmCCYVBwD+Rp0omH4CLw7f/78z3KgfCBrZ05HQQ3KcsDjiXoCAZQXluGiooAMWjwAIJ9oAM6kyI2Wo3DVEegSotFoRMm9i7d56muHs4V5vPIgGoiisuoCCYVp/2K/htyIyhQATcBE+S+K6hp8scPwDBFdT1B3F5mblOaInIbVpE6Fka1wSgC9yeKYfw9f+lxh7cY+uvsI0ZonSGl50IECWOALZ7qqe3MJWnZxL2BkJykbT2ueXCxqZIaQGf7ldCXWDjsorReTznYG9MFzOG/GBLCi14TNL5nJ0posfbYY0Fk1I8odpQrg0Jggzq5WeLq4dJaOCojzpWymVhAVLr6jozNDa9FsEQHE6CwfldOl7ChpKC9AXEnnUkUFcLaTAvtAALOVWzs8WsamUcYhSMcC3LpQubXDtFYN6YF0htpykfSqzfi+wqWttOXK3zkqH87Isf1gfELogfzfcrYvLHQY5oh0g4b39s5QEoAlGIBDmwgcFKB/ETr8W4PttvaF1Y6KrR12dtPhXzrfKaPRCxzAiMY2ETQC4izPtrdPN1VwExVK6wYsZzxW6j4wTIkCplaz+r1Ybo6QPTdHSNlhw3HglhsaxCgtb+g15BF70B9a6yQiTWjLE5dwwB4oKrsIkQuI1Bg94yNNSQCW11Q4TYl/eYGtxmZqtPpCdbGFdMbgKopDIAYMQDV2lXVS3kZE+gWlxXIrfBmbqZVz0pSTVnCI8E/HBIgrua2qSzhpCvcCpZ7yQnFQIJ2ltI3S3CiOaFXnlJklWjoA9J8O/yujJW+mVtra4XwBuIyukjqM/yUPjTXzYmzFXuXj9lgq0RFpkZmmIADROguTWSXuiaquHS7chNXIrqzCOQrhkXXBybXfMisBMbLAlbMrLjpz1PDK0cLBRLasPZU11d+TASoFPNf5ktZGFrAv3mrn9Y24kZWjJnaXF3hzncGigI0K614uc1tlxL/1HY4t2YaZ2ExN043YnOuT5SqBJI2py7ndzIWWMpVAFIML5k6eNrc7uyNbrle4mHZodydwLgfLGROK1ttOc7vjl90LKAhnWznj4xttTP6BiTbX6krJ7UAU5y7wrMnT51EBTOwub+f53lK31+mZGlV2NdGcECFcmC8lMgCebelI/iSO2WGF3kXDtkCaXBxz8uz+M0pwidrnjDYEUZTnFogRNXNGirp2uOxTWggiM2YsdTp5szfJ7Sen7mPE8+2zLYdGiOAD0dnpIgUq9ZScUjZTK35Ulo3lkus3DvOMJie6R228PW80VnBO0OjC/C25uAzg/J/g/HI6n3755yRRPW4vO7U0YdHdTAIgJ/4ytYoVdH8T2k+fz7y+/G4kpptAj0XmZ2c6eFaX/tGfO8zzo21tY0QTlOXxkjR5Y2mqLVPUhhTQBzqdbGqfndu/2YRnfra9Ka2u9qcjADpNQFFBGy6Ag3c6UQ8Lg6oIwRJ6xk+Ly5vnh5YWqxVA87S60naU/AmeF2iWPmNWhYp3Q8fixMoKHLdnxoZUn36RgMgxOjXW9LnDaCCBEr/H89xgswg65w4f45OrT84dLu+UmZ/M6fGm6TMomYqihE4SNtQgnAoCRxgJgjOEUF9WgChK7ijoYyGYCIhoDkw0mF0uPLDxCOlTCIgcbxty4ghhAZR+0lTxwUxpJz0VGcxUjb7dzHF7FWrD1aV/4ge88gIo3gR0upGqNoHq0GcOdCRcit9QpiPDGfdbjoo+g1WoyNrhA1zJooOZ0lzZgsFMlemfOEIFGlBqdrUyw9mq0c9fO6ymTA/Orpo56tsYoor0qZw+bzKkdaT0T/wAvbXDSnZVDSsXz65WMKxdHfpw2RzrZgTGwfK8kxEEhHABhIuFaQM9hJOHuTmBcQMEq0EICAGXonEsXLsL7nQRbkFDjj1a+ngjGzOppaKprbJSa1WnX+65wz+dNnwSEKlMQOQVagJ52VVic3LJVF2ENruKDixUEcTm5JK5ughtMhcawaOkr7d2+BXrBl95R0jjCpc8mKDsCh8JfUY71CgYjDi044aCwQi10clR0mewCh3f7K7p4bDZNnTUbZhWQOTYZndN0rcdHBQ9Btlds/R1AiLHKrt7khkyS/9EAK+6AP4fUnq7J13kXEsAAAAASUVORK5CYII=" alt="Mastercard">
+                        <img src="data:image/png;base64,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" alt="American Express">
+                        <img src="data:image/png;base64,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" alt="Elo">
+                        <img src="data:image/png;base64,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" alt="Pix">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCEsGnxPLF-bdtE3F4cSAftI4nuL-tc6QkgA&s" alt="Boleto">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2023_Ita%C3%BA_Unibanco_Logo.png/1200px-2023_Ita%C3%BA_Unibanco_Logo.png" alt="Itaú">
+                        <img src="data:image/png;base64,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" alt="Banco do Brasil">
+                        <img src="https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-novo-2018.png" alt="Bradesco">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuFNxu2YgCD8Fk9fFFW0awvMRf7ODPUfiGHtY47CxNjaz-hl8xsznxWk9MDIefIyO0bjE&usqp=CAU" alt="Santander">
+                    </div>
+                    <div class="warning-box">
+                        <svg viewBox="0 0 24 24" fill="red" width="24px" height="24px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        <p>A venda da plataforma CineFlick em qualquer outro site é proibida. Não compre falsificações e garanta um produto de qualidade comprando APENAS através do nosso site oficial.</p>
+                    </div>
+                </div>
+                <div class="footer-security">
+                    <h4>Site seguro</h4>
+                    <div class="security-badges">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D12AQFGz2ZCixZEHg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1710178804731?e=2147483647&v=beta&t=ZOvudBHOoWLrc5XhzPAvyn2oFY6jRoG5VcAS02nFpwg" alt="Google Safe Browsing">
+                        <img src="https://rdigital.com.br/wp-content/uploads/2017/07/ssl.jpg" alt="SSL Secure">
+                        <img src="https://acqualimp.com/wp-content/uploads/2018/06/imagens_blog_800x600-5.jpeg" alt="Reclame Aqui Verificado">
+                    </div>
+                    <img src="https://cdn.prod.website-files.com/686fd3c4baa0f126615c68cc/6877b8b921aaca3549b7e0bd_portfolio-image.png" alt="Site Blindado">
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>Esta página não tem qualquer vínculo com o Facebook S/A e suas empresas, apenas usamos a plataforma para promover os nossos produtos. Ao sair da plataforma toda responsabilidade sobre produtos vendidos e ofertados é de inteira responsabilidade da nossa empresa, bem como se houver quaisquer eventualidades legais.<br>Declaramos que o Facebook S/A não tem qualquer vínculo de associação em processos cíveis ou criminais. Nosso email de suporte é: suporte@oficialcineflick.com</p>
+                <p>Não compre produtos piratas, não vendemos em marketplaces como: Mercado Livre, Shopee, Aliexpress, Facebook, Olx etc. Não damos suporte a produtos comprados nestes canais.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; CineFlick 2025 Todos os direitos reservados</p>
+                <p class="developer-info">Desenvolvido por aprovados<a href="https://www.instagram.com/a_provados/" target="_blank" rel="noopener noreferrer"><img src="logo.png" alt="Aprovados"></a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="congrats-modal">
+        <div class="modal-content">
+            <div class="fireworks-container">
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+            </div>
+            <h2>Parabéns!</h2>
+            <p>Você acaba de ganhar um desconto especial. Clique abaixo para continuar seu pagamento!</p>
+            <a href="#" class="cta-button" id="modal-confirm-button" target="_blank" rel="noopener noreferrer">
+                Ir para o Pagamento
+            </a>
+        </div>
+    </div>
+    <div class="social-proof-toast" id="social-proof-toast">
+        <div class="toast-icon">
+            <div class="live-pulse"></div>
+        </div>
+        <div class="toast-content">
+            <p class="toast-title">Mais um assinante na CineFlick!</p>
+            <p class="toast-visitors" id="visitor-count">50 pessoas estão nesta página</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
