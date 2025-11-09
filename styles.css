@@ -34,6 +34,7 @@
 
 html {
     scroll-behavior: smooth;
+    
 }
 
 body {
@@ -1379,6 +1380,11 @@ p.dark-text {
     .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem; 
+    }
+    
+    /* ADICIONE ISSO AQUI: */
+    .pricing-card.featured {
+        transform: scale(1); /* Remove o zoom assim que vira 2 colunas */
     }
 }
 
