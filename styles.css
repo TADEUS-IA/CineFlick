@@ -1307,7 +1307,7 @@ p.dark-text {
     padding: 0.75rem;
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1.9rem;
 }
 .warning-box svg {
     width: 20px;
@@ -1316,7 +1316,7 @@ p.dark-text {
     flex-shrink: 0;
 }
 .warning-box p {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
     max-width: 80%;
     line-height: 1.5;
