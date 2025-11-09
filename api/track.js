@@ -1,12 +1,14 @@
 // Arquivo: api/track.js
-// [CORREÇÃO V5 - ESTA É A VERSÃO CORRETA]
+// [CORREÇÃO V6 - DEFINITIVA]
 
-// Importa o módulo SDK e as classes do local correto
 const bizSdk = require('facebook-nodejs-business-sdk');
-const FacebookAdsApi = bizSdk.FacebookAdsApi;
-const ServerEvent = bizSdk.ServerEvent;
-const UserData = bizSdk.UserData;
-const Pixel = bizSdk.Pixel;
+
+// [CORREÇÃO] Tenta importar as classes do objeto principal ou do 'default',
+// o que for que o bundler da Vercel tenha disponibilizado.
+const FacebookAdsApi = bizSdk.FacebookAdsApi || bizSdk.default.FacebookAdsApi;
+const ServerEvent = bizSdk.ServerEvent || bizSdk.default.ServerEvent;
+const UserData = bizSdk.UserData || bizSdk.default.UserData;
+const Pixel = bizSdk.Pixel || bizSdk.default.Pixel;
 
 const crypto = require('crypto');
 
@@ -36,6 +38,12 @@ module.exports = async (req, res) => {
     if (!ACCESS_TOKEN || !PIXEL_ID) {
         console.error('Erro de Configuração: Chaves do Meta não encontradas no ambiente.');
         return res.status(500).json({ status: 'error', message: 'Erro interno de configuração do servidor.' });
+    }
+
+    // [CORREÇÃO DE BUG] Verifica se as classes do SDK foram carregadas
+    if (!ServerEvent || !UserData || !Pixel) {
+         console.error('[CAPI-Vercel] Falha ao carregar classes do SDK (ServerEvent, UserData ou Pixel estão undefined). Verifique as importações.');
+         return res.status(500).json({ status: 'error', message: 'Erro interno de configuração do SDK no servidor.' });
     }
 
     try {
