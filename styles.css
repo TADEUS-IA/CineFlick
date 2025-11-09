@@ -34,7 +34,7 @@
 
 html {
     scroll-behavior: smooth;
-    
+    overflow-x: hidden; /* <-- MODIFICAÇÃO 1 (Solução 2) */
 }
 
 body {
@@ -58,7 +58,7 @@ section {
 }
 
 /* ======================================================= */
-/* NAVEGAÇÃO SUPERIOR (FLUTUANTE / STICKY)               */
+/* NAVEGAÇÃO SUPERIOR (FLUTUANTE / STICKY)                 */
 /* ======================================================= */
 .main-nav {
     position: absolute; 
@@ -276,7 +276,7 @@ p.dark-text {
 
 
 /* ======================================================= */
-/* SEÇÃO "COMO FUNCIONA" (VÍDEO + PLANO MENSAL)         */
+/* SEÇÃO "COMO FUNCIONA" (VÍDEO + PLANO MENSAL)            */
 /* ======================================================= */
 .how-it-works-section {
     padding-top: 60px;
@@ -626,7 +626,7 @@ p.dark-text {
 
 
 /* ======================================================= */
-/* NOVA SEÇÃO: LOGOS DE STREAMING + CTA                  */
+/* NOVA SEÇÃO: LOGOS DE STREAMING + CTA                    */
 /* ======================================================= */
 .streaming-logos-section {
     padding-top: 60px; 
@@ -980,7 +980,7 @@ p.dark-text {
     margin-bottom: 1.5rem;
 }
 .guarantee-image-wrapper img {
-    height: px;
+    height: auto; /* Corrigido de 'px' */
     width: 300px;
     object-fit: contain;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
@@ -1382,9 +1382,9 @@ p.dark-text {
         gap: 2rem; 
     }
     
-    /* ADICIONE ISSO AQUI: */
+    /* <-- MODIFICAÇÃO 2 (Solução 1) */
     .pricing-card.featured {
-        transform: scale(1); /* Remove o zoom assim que vira 2 colunas */
+        transform: scale(1); /* Reseta o zoom que estava vazando */
     }
 }
 
@@ -1620,9 +1620,7 @@ p.dark-text {
     .pricing-grid {
         grid-template-columns: 1fr; 
     }
-    .pricing-card.featured {
-        transform: scale(1); 
-    }
+    /* (A regra .pricing-card.featured foi removida daqui pois já foi corrigida no @media 1100px) */
 }
 
 
@@ -1834,7 +1832,7 @@ p.dark-text {
     /* * Criamos 12 partículas usando box-shadow.
      * Sintaxe: [X-offset] [Y-offset] [Blur] [Cor]
      * Usamos as cores verde e amarela do site.
-    */
+     */
     box-shadow: 
         /* Partículas Verdes */
         -60px 0px 0 var(--color-green),
