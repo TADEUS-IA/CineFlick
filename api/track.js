@@ -1,14 +1,15 @@
 // Arquivo: api/track.js
-// [CORREÇÃO V6 - DEFINITIVA]
+// [CORREÇÃO V7 - DEFINITIVA]
 
-const bizSdk = require('facebook-nodejs-business-sdk');
+// Vercel pode empacotar módulos CJS dentro de um 'default'.
+// Vamos importar o 'default' diretamente.
+const bizSdk = require('facebook-nodejs-business-sdk').default;
 
-// [CORREÇÃO] Tenta importar as classes do objeto principal ou do 'default',
-// o que for que o bundler da Vercel tenha disponibilizado.
-const FacebookAdsApi = bizSdk.FacebookAdsApi || bizSdk.default.FacebookAdsApi;
-const ServerEvent = bizSdk.ServerEvent || bizSdk.default.ServerEvent;
-const UserData = bizSdk.UserData || bizSdk.default.UserData;
-const Pixel = bizSdk.Pixel || bizSdk.default.Pixel;
+// [CORREÇÃO] Agora, acessamos as classes a partir desse 'default'
+const FacebookAdsApi = bizSdk.FacebookAdsApi;
+const ServerEvent = bizSdk.ServerEvent;
+const UserData = bizSdk.UserData;
+const Pixel = bizSdk.Pixel;
 
 const crypto = require('crypto');
 
