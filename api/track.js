@@ -1,5 +1,5 @@
 // Arquivo: api/track.js
-// [CORREÇÃO V5 - DEFINITIVA]
+// [CORREÇÃO V5 - ESTA É A VERSÃO CORRETA]
 
 // Importa o módulo SDK e as classes do local correto
 const bizSdk = require('facebook-nodejs-business-sdk');
