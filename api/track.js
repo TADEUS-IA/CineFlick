@@ -1,11 +1,12 @@
 // Arquivo: api/track.js
+// [CORREÇÃO V5 - DEFINITIVA]
 
-// [CORREÇÃO V4] Importa o módulo SDK e as classes do namespace 'objects'
+// Importa o módulo SDK e as classes do local correto
 const bizSdk = require('facebook-nodejs-business-sdk');
 const FacebookAdsApi = bizSdk.FacebookAdsApi;
-const ServerEvent = bizSdk.objects.ServerEvent;
-const UserData = bizSdk.objects.UserData;
-const Pixel = bizSdk.objects.Pixel;
+const ServerEvent = bizSdk.ServerEvent;
+const UserData = bizSdk.UserData;
+const Pixel = bizSdk.Pixel;
 
 const crypto = require('crypto');
 
@@ -25,7 +26,7 @@ const api = FacebookAdsApi.init(ACCESS_TOKEN);
  * Handler da Vercel
  */
 module.exports = async (req, res) => {
-
+    
     // 3. VERIFICAÇÃO DE SEGURANÇA E MÉTODO
     if (req.method !== 'POST') {
         return res.status(405).json({ status: 'error', message: 'Método não permitido.' });
@@ -46,7 +47,6 @@ module.exports = async (req, res) => {
         const clientUserAgent = req.headers['user-agent'];
         const eventId = crypto.randomUUID(); 
 
-        // [CORREÇÃO] Usa a classe 'UserData' que agora está definida
         const metaUserData = new UserData()
             .setEmails(userData.email ? [String(userData.email)] : [])
             .setPhones(userData.phone ? [String(userData.phone)] : [])
@@ -57,8 +57,7 @@ module.exports = async (req, res) => {
 
         // 6. PREPARA O EVENTO
         const currentTimestamp = Math.floor(new Date() / 1000);
-
-        // [CORREÇÃO] Usa a classe 'ServerEvent' que agora está definida
+        
         const serverEvent = new ServerEvent()
             .setEventName(eventName)
             .setEventTime(currentTimestamp)
@@ -73,20 +72,19 @@ module.exports = async (req, res) => {
                 currency: customData.currency || 'BRL'
             });
         }
-
+        
         if (TEST_EVENT_CODE) {
             serverEvent.setTestEventCode(TEST_EVENT_CODE);
             console.log(`[CAPI-Vercel] MODO DE TESTE ATIVADO. Código: ${TEST_EVENT_CODE}`);
         }
-
+        
         const eventsData = [serverEvent];
 
         // 7. ENVIA PARA O META
         console.log(`[CAPI-Vercel] Enviando evento: ${eventName} para Pixel ID: ${PIXEL_ID}`);
-
-        // [CORREÇÃO] Usa a classe 'Pixel' que agora está definida
+        
         const response = await Pixel.sendServerEvent(PIXEL_ID, eventsData); 
-
+        
         console.log('[CAPI-Vercel] Resposta do Meta:', response);
 
         // 8. RETORNA SUCESSO PARA O FRONTEND
@@ -100,7 +98,7 @@ module.exports = async (req, res) => {
         // Captura o erro
         const errorMessage = error.response ? JSON.stringify(error.response.data) : error.message;
         console.error('[CAPI-Vercel] Erro ao processar evento:', errorMessage);
-
+        
         // 9. RETORNA ERRO PARA O FRONTEND
         return res.status(500).json({
             status: 'error',
