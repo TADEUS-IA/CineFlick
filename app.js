@@ -25,15 +25,15 @@ const CONFIG = {
     },
 
     // Links de CTA e Vídeos
-    checkoutUrl: 'https://pay.kirvano.com/1721d6a3-0d8f-4226-8dee-9889e6a7e11c?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3',
+    checkoutUrl: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe',
     supportUrl: 'https://wa.me/11942439819', 
     
     // [ATUALIZADO] Links dos Planos atualizados conforme o novo HTML
     plans: {
-        mensal: 'https://pay.kirvano.com/1721d6a3-0d8f-4226-8dee-9889e6a7e11c?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 19,90
-        trimestral: 'https://pay.kirvano.com/110fe63a-5a0a-4044-95ec-cf995b328d01?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 39,90
-        semestral: 'https://pay.kirvano.com/2664d44d-5eeb-42ab-b2b8-2899fa51f3cd?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 69,90
-        anual: 'https://pay.kirvano.com/2ec265d2-9195-4e02-9160-7b2736f66d32?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3' // R$ 129,90
+        mensal: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 19,90
+        trimestral: 'https://pay.kirvano.com/63204ff4-d01c-4afc-b9ed-7d085eb045f0?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 39,90
+        semestral: 'https://pay.kirvano.com/2fa263d7-8ab5-47ca-bed8-785dbda2d330?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 69,90
+        anual: 'https://pay.kirvano.com/5630b4f0-09c8-476b-8739-4bef06cad2de?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe' // R$ 129,90
     },
     
     video: {
