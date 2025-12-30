@@ -277,7 +277,7 @@ function populateFeatureCards() {
 
     let featuresHTML = '';
     CONFIG.featureCards.forEach(card => {
-        const imageUrl = card.images[0] || 'https://via.placeholder.com/400x225/2a2a4a/ffffff?text=CineFlick'; // Placeholder
+        const imageUrl = card.images[0] || 'https://via.placeholder.com/400x225/2a2a4a/ffffff?text=TopStreaming'; // Placeholder
 
         featuresHTML += `
             <article class="feature-card animate-on-scroll" data-card-id="${card.id}">
