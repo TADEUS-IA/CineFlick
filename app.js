@@ -41,7 +41,7 @@ const CONFIG = {
         heroVideoId: 'qEVUtrk8_B4', // Ex: ID do trailer de "Duna 2"
         
         // URL do vídeo demo (pode ser YouTube ou local)
-        appDemoUrl: 'https://www.youtube.com/embed/6Q_fB6x5CJE?si=C2rn_V2IaY2N-qE3' // Ex: 'videos/app-demo.mp4'
+        appDemoUrl: 'https://www.youtube.com/embed/D1m-B38btHM?si=lRpk4tPbz-dOAF_B' // Ex: 'videos/app-demo.mp4'
     },
 
     // DADOS DOS CARDS COM CARROSSEL INTERNO
