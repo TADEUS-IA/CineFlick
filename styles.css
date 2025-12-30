@@ -34,6 +34,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* <-- MODIFICAÇÃO 1 (Solução 2) */
 }
 
 body {
@@ -57,7 +58,7 @@ section {
 }
 
 /* ======================================================= */
-/* NAVEGAÇÃO SUPERIOR (FLUTUANTE / STICKY)               */
+/* NAVEGAÇÃO SUPERIOR (FLUTUANTE / STICKY)                 */
 /* ======================================================= */
 .main-nav {
     position: absolute; 
@@ -275,7 +276,7 @@ p.dark-text {
 
 
 /* ======================================================= */
-/* SEÇÃO "COMO FUNCIONA" (VÍDEO + PLANO MENSAL)         */
+/* SEÇÃO "COMO FUNCIONA" (VÍDEO + PLANO MENSAL)            */
 /* ======================================================= */
 .how-it-works-section {
     padding-top: 60px;
@@ -378,7 +379,7 @@ p.dark-text {
     gap: 2.5rem; 
 }
 .logo-bar img {
-    height: 25px; 
+    height: 50px; 
     width: auto;
     filter: grayscale(1) opacity(0.7);
     transition: var(--transition-fast);
@@ -625,7 +626,7 @@ p.dark-text {
 
 
 /* ======================================================= */
-/* NOVA SEÇÃO: LOGOS DE STREAMING + CTA                  */
+/* NOVA SEÇÃO: LOGOS DE STREAMING + CTA                    */
 /* ======================================================= */
 .streaming-logos-section {
     padding-top: 60px; 
@@ -661,8 +662,8 @@ p.dark-text {
     max-width: 700px; 
 }
 .streaming-logo-grid img {
-    height: 50px; 
-    width: 50px;
+    height: 100px; 
+    width: 100px;
     border-radius: 12px; 
     transition: var(--transition-fast);
 }
@@ -728,7 +729,7 @@ p.dark-text {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-image: url('https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-image: url('https://live.staticflickr.com/3240/2334649248_f1da0e714d_b.jpg');
     background-size: cover;
     background-position: center;
     animation: kenBurns 30s infinite alternate ease-in-out;
@@ -979,8 +980,8 @@ p.dark-text {
     margin-bottom: 1.5rem;
 }
 .guarantee-image-wrapper img {
-    height: 120px;
-    width: 120px;
+    height: auto; /* Corrigido de 'px' */
+    width: 300px;
     object-fit: contain;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
 }
@@ -1252,6 +1253,7 @@ p.dark-text {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    align-items: center;
 }
 
 .footer-top {
@@ -1290,7 +1292,7 @@ p.dark-text {
     margin-bottom: 1.5rem;
 }
 .payment-icons img {
-    height: 25px;
+    height: 20px;
     width: auto;
     background-color: #FFF; 
     border-radius: 4px;
@@ -1302,22 +1304,23 @@ p.dark-text {
     background-color: rgba(249, 168, 38, 0.1); 
     border: 1px solid var(--color-primary);
     border-radius: 12px;
-    padding: 1rem;
+    padding: 0.75rem;
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1.9rem;
 }
 .warning-box svg {
-    width: 32px;
+    width: 20px;
     height: 20px;
     fill: var(--color-primary); /* Ícone amarelo */
     flex-shrink: 0;
 }
 .warning-box p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
-    max-width: 100%;
+    max-width: 80%;
     line-height: 1.5;
+    
 }
 
 .security-badges {
@@ -1339,7 +1342,7 @@ p.dark-text {
 .footer-disclaimer p {
     font-size: 0.8rem;
     color: var(--color-text-muted);
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto 1rem auto;
 }
 
@@ -1351,7 +1354,7 @@ p.dark-text {
     align-items: center;
 }
 .footer-bottom p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--color-text-muted);
     max-width: 100%;
 }
@@ -1379,6 +1382,11 @@ p.dark-text {
     .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem; 
+    }
+    
+    /* <-- MODIFICAÇÃO 2 (Solução 1) */
+    .pricing-card.featured {
+        transform: scale(1); /* Reseta o zoom que estava vazando */
     }
 }
 
@@ -1487,8 +1495,8 @@ p.dark-text {
         margin-bottom: 2rem;
     }
     .streaming-logo-grid img {
-        height: 40px;
-        width: 40px;
+        height: 100px;
+        width: 100px;
     }
     
     .sports-section {
@@ -1614,9 +1622,7 @@ p.dark-text {
     .pricing-grid {
         grid-template-columns: 1fr; 
     }
-    .pricing-card.featured {
-        transform: scale(1); 
-    }
+    /* (A regra .pricing-card.featured foi removida daqui pois já foi corrigida no @media 1100px) */
 }
 
 
@@ -1828,7 +1834,7 @@ p.dark-text {
     /* * Criamos 12 partículas usando box-shadow.
      * Sintaxe: [X-offset] [Y-offset] [Blur] [Cor]
      * Usamos as cores verde e amarela do site.
-    */
+     */
     box-shadow: 
         /* Partículas Verdes */
         -60px 0px 0 var(--color-green),
