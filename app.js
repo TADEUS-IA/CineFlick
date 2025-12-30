@@ -8,7 +8,7 @@
  */
 const CONFIG = {
     // IDs de Tracking
-    metaPixelId: 'SEU_ID_DO_PIXEL_AQUI',
+    metaPixelId: '1148594784078039',
     gtmId: 'GTM-SEU_ID_AQUI',
 
     // Endpoints de Integração
@@ -25,15 +25,15 @@ const CONFIG = {
     },
 
     // Links de CTA e Vídeos
-    checkoutUrl: 'https://seu-checkout.com/produto',
-    supportUrl: 'https://wa.me/11943429819', 
+    checkoutUrl: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe',
+    supportUrl: 'https://wa.me/11942439819', 
     
     // [ATUALIZADO] Links dos Planos atualizados conforme o novo HTML
     plans: {
-        mensal: 'https://pay.kirvano.com/1721d6a3-0d8f-4226-8dee-9889e6a7e11c?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 19,90
-        trimestral: 'https://pay.kirvano.com/110fe63a-5a0a-4044-95ec-cf995b328d01?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 39,90
-        semestral: 'https://pay.kirvano.com/2664d44d-5eeb-42ab-b2b8-2899fa51f3cd?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3', // R$ 69,90
-        anual: 'https://pay.kirvano.com/2ec265d2-9195-4e02-9160-7b2736f66d32?aff=7b7712a2-90d1-4ce7-8eb7-3ea91f5e4fb3' // R$ 129,90
+        mensal: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 19,90
+        trimestral: 'https://pay.kirvano.com/63204ff4-d01c-4afc-b9ed-7d085eb045f0?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 39,90
+        semestral: 'https://pay.kirvano.com/2fa263d7-8ab5-47ca-bed8-785dbda2d330?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 69,90
+        anual: 'https://pay.kirvano.com/5630b4f0-09c8-476b-8739-4bef06cad2de?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe' // R$ 129,90
     },
     
     video: {
@@ -49,7 +49,6 @@ const CONFIG = {
         {
             id: 'filmes',
             title: 'Filmes Incríveis',
-            // [ATUALIZADO] Descrição alinhada com a imagem de referência
             description: 'Assista a clássicos, lançamentos e grandes produções vencedoras de prêmios, tudo em alta definição e com uma seleção que agrada a todos os gostos.',
             images: [
                 'https://m.media-amazon.com/images/M/MV5BNzk5MTE4YTUtNGU2My00MTYxLWE5NGItODk4YWFkOWYyMjA5XkEyXkFqcGc@._V1_.jpg', // Duna 2
@@ -112,19 +111,45 @@ const CONFIG = {
     testimonials: [
         {
             id: 't1',
-            imageUrl: 'https://via.placeholder.com/400x600/FFFFFF/000000?text=Print+WhatsApp+1'
+            imageUrl: '1.jpg'
         },
         {
             id: 't2',
-            imageUrl: 'https://via.placeholder.com/400x600/FFFFFF/000000?text=Print+WhatsApp+2'
+            imageUrl: '2.jpg'
         },
         {
             id: 't3',
-            imageUrl: 'https://via.placeholder.com/400x600/FFFFFF/000000?text=Print+WhatsApp+3'
-        }
+            imageUrl: '3.jpg'
+        },
+        {
+            id: 't4',
+            imageUrl: '4.jpg'
+        },
+        {
+            id: 't5',
+            imageUrl: '5.jpg'
+        },
+        {
+            id: 't6',
+            imageUrl: '6.jpg'
+        },
+        {
+            id: 't7',
+            imageUrl: '1.jpg'
+        },
+        {
+            id: 't8',
+            imageUrl: '2.jpg'
+        },
+        {
+            id: 't9',
+            imageUrl: '3.jpg'
+        },
+        {
+            id: 't10',
+            imageUrl: '4.jpg'
+        },
     ]
-    
-    // [REMOVIDO] CONFIG.movies foi removido por ser "dead code".
 };
 
 /**
@@ -138,11 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroVideo();
     initAppVideo();
     populateFeatureCards(); // Popula os 6 cards (layout atualizado)
-    // [REMOVIDO] initCardCarousels() não é mais necessário
     populateTestimonials(); // Popula os slides de depoimentos
     initTestimonialCarousel(); // Ativa o carrossel de depoimentos
     initFAQAccordion(); // Ativa o FAQ
-    // [REMOVIDO] populateCatalog() não é mais necessário
     initEventListeners();
     initScrollAnimations();
     
@@ -179,7 +202,13 @@ function initAnalytics() {
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', CONFIG.metaPixelId);
-        fbq('track', 'PageView');
+        
+        /* * [CORREÇÃO APLICADA] 
+         * Usamos nossa função central 'trackEvent' para que o
+         * PageView também seja enviado para a CAPI (Servidor).
+         */
+        trackEvent('PageView', { event: 'page_view' });
+
         console.log('Meta Pixel Inicializado.');
     }
 }
@@ -241,8 +270,6 @@ function initAppVideo() {
  * ===================================================================
  * POPULA OS CARDS DE FEATURES (Layout Atualizado)
  * ===================================================================
- * [ATUALIZADO] Esta função agora gera o layout de card estático
- * (imagem no topo, conteúdo abaixo), conforme a referência.
  */
 function populateFeatureCards() {
     const grid = document.getElementById('feature-card-grid');
@@ -250,8 +277,7 @@ function populateFeatureCards() {
 
     let featuresHTML = '';
     CONFIG.featureCards.forEach(card => {
-        // Pega apenas a *primeira* imagem para o novo layout
-        const imageUrl = card.images[0] || 'https://via.placeholder.com/400x225/2a2a4a/ffffff?text=CineFlick'; // Placeholder
+        const imageUrl = card.images[0] || 'https://via.placeholder.com/400x225/2a2a4a/ffffff?text=TopStreaming'; // Placeholder
 
         featuresHTML += `
             <article class="feature-card animate-on-scroll" data-card-id="${card.id}">
@@ -268,12 +294,6 @@ function populateFeatureCards() {
 
     grid.innerHTML = featuresHTML;
 }
-
-/**
- * [REMOVIDO]
- * A função initCardCarousels() foi removida pois o novo layout 
- * da seção #features não utiliza mais carrosséis internos nos cards.
- */
 
 /**
  * ===================================================================
@@ -403,14 +423,8 @@ function initFAQAccordion() {
 }
 
 
-/**
- * [REMOVIDO]
- * A função populateCatalog() foi removida pois a seção #catalogo
- * não existe mais no HTML reordenado.
- */
-
 /* =================================================================== */
-/* [MODIFICADO] LÓGICA DO POP-UP DE DESCONTO (MODAL)             */
+/* LÓGICA DO POP-UP DE DESCONTO (MODAL)                           */
 /* =================================================================== */
 
 /**
@@ -490,17 +504,14 @@ function setupPlanButtonListener(buttonElement, planName, checkoutUrl) {
  */
 function initEventListeners() {
     
-    // [REMOVIDO] Listener da Busca (id="search-input")
-    
     // 2. CTA da Navegação
     const navCTA = document.getElementById('nav-cta');
     if (navCTA) {
-        // [ATUALIZADO] O href já está como #planos no HTML
         navCTA.addEventListener('click', (e) => {
             console.log('Evento: Clique no CTA da Nav');
             trackEvent('Nav_CTA_Click', {
                 event: 'nav_cta_click',
-                destination_url: navCTA.href // Irá registrar o link #planos
+                destination_url: navCTA.href 
             });
         });
     }
@@ -508,12 +519,11 @@ function initEventListeners() {
     // 3. CTA Principal do Hero
     const heroCtaMain = document.getElementById('hero-cta-main');
     if (heroCtaMain) {
-        // [ATUALIZADO] O href já está como #planos no HTML
         heroCtaMain.addEventListener('click', (e) => {
             console.log('Evento: Clique no CTA do Hero (Principal)');
             trackEvent('Hero_CTA_Click', {
                 event: 'hero_cta_click',
-                destination_url: heroCtaMain.href // Irá registrar o link #planos
+                destination_url: heroCtaMain.href 
             });
         });
     }
@@ -586,9 +596,6 @@ function initEventListeners() {
         ctaSupport.setAttribute('target', '_blank'); 
         ctaSupport.addEventListener('click', () => trackEvent('CTA_Support_Click', { event: 'support_cta_click', destination_url: CONFIG.supportUrl }));
     }
-
-
-    // [REMOVIDO] Listener do Catalog Grid (id="catalog-grid")
     
     // 12. Play do Vídeo Demo
     const appDemoVideo = document.getElementById('app-demo-video');
@@ -603,15 +610,10 @@ function initEventListeners() {
     }
 }
 
-/**
- * [REMOVIDO]
- * A função handleSearch() foi removida pois a seção #catalogo
- * não existe mais no HTML reordenado.
- */
 
 /**
  * ===================================================================
- * MÓDULO DE TELEMETRIA E TRACKING
+ * MÓDULO DE TELEMETRIA E TRACKING (COM CAPI)
  * ===================================================================
  */
 function trackEvent(eventName, payload, disableSheets = false) {
@@ -621,7 +623,7 @@ function trackEvent(eventName, payload, disableSheets = false) {
         window.dataLayer.push(payload);
     }
 
-    // 2. Meta Pixel
+    // 2. Meta Pixel (Browser-side)
     if (window.fbq && CONFIG.metaPixelId) {
         const standardEvents = ['PageView', 'ViewContent', 'AddToCart', 'Purchase', 'Lead', 'Search'];
         if (standardEvents.includes(eventName)) {
@@ -640,6 +642,9 @@ function trackEvent(eventName, payload, disableSheets = false) {
     if (CONFIG.googleSheets.enabled && CONFIG.googleSheets.appsScriptUrl && !disableSheets) {
         sendToGoogleSheets(payload);
     }
+
+    // 5. Meta Conversions API (Server-side via Netlify)
+    sendToServerSideCAPI(eventName, payload);
 }
 
 /**
@@ -709,6 +714,58 @@ function initScrollAnimations() {
     });
 
     targets.forEach(target => observer.observe(target));
+}
+
+
+/* =================================================================== */
+/* [NOVO] MÓDULO DE API DE CONVERSÕES (CAPI) - NETLIFY   */
+/* =================================================================== */
+
+/**
+ * Pega os cookies _fbp e _fbc para enviar ao servidor
+ */
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+/**
+ * Envia o evento para o nosso servidor (Netlify Function)
+ */
+async function sendToServerSideCAPI(eventName, payload) {
+    try {
+        // Prepara os dados para o nosso servidor
+        const capiPayload = {
+            eventName: eventName,
+            eventSourceUrl: window.location.href, // URL onde o evento ocorreu
+            userData: {
+                // Tenta pegar os cookies _fbp e _fbc (se existirem)
+                fbp: getCookie('_fbp') || null,
+                fbc: getCookie('_fbc') || null,
+                // email: "usuario@email.com", // (Exemplo se você coletar)
+            },
+            customData: {
+                value: payload.value || null, // Pega o valor do payload do evento
+                currency: payload.currency || 'BRL' // Pega a moeda do payload ou usa BRL
+            }
+        };
+
+        // URL da Netlify Function (caminho relativo)
+        const serverApiUrl = '/api/track'; 
+
+        await fetch(serverApiUrl, {
+            method: 'POST',
+            body: JSON.stringify(capiPayload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(`[CAPI-Frontend] Evento '${eventName}' enviado ao servidor Netlify.`);
+
+    } catch (error) {
+        console.error('[CAPI-Frontend] Erro ao enviar evento para o servidor:', error);
+    }
 }
 
 
