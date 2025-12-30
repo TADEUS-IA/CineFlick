@@ -821,8 +821,8 @@ p.dark-text {
     gap: 0.5rem;
 }
 .comparison-item img {
-    width: 100%;
-    height: 80px; 
+    width: 70%;
+    height: 70px; 
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
