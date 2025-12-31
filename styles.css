@@ -187,7 +187,7 @@ p.dark-text {
     text-decoration: none;
     padding: 16px 32px;
     border-radius: 30px; 
-    margin-top: 2rem;
+    margin-top: 0rem;
     transition: var(--transition-fast);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -289,7 +289,7 @@ p.dark-text {
 }
 
 .how-it-works-card {
-    max-width: 900px;
+    max-width: 380px;
     margin: 0 auto;
     background-color: var(--color-card-bg); 
     border-radius: 24px;
@@ -633,7 +633,7 @@ p.dark-text {
 }
 
 .streaming-card {
-    max-width: 400px; 
+    max-width: 380px; 
     margin: 0 auto;
     background-color: var(--color-card-bg);
     border-radius: 24px;
@@ -787,7 +787,7 @@ p.dark-text {
     padding-top: 60px;
 }
 .comparison-card {
-    max-width: 400px; 
+    max-width: 380px; 
     margin: 0 auto;
     background-color: var(--color-primary); 
     border-radius: 24px;
@@ -821,8 +821,8 @@ p.dark-text {
     gap: 0.90rem;
 }
 .comparison-item img {
-    width: 70%;
-    height: 70px; 
+    width: 80%;
+    height: 80px; 
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -962,7 +962,7 @@ p.dark-text {
 }
 
 .guarantee-card {
-    max-width: 400px;
+    max-width: 380px;
     margin: 0 auto;
     background-color: var(--color-primary); 
     color: var(--color-secondary); 
@@ -1421,7 +1421,7 @@ p.dark-text {
     }
     .cta-nav {
         padding: 10px 20px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     h1 {
@@ -1533,7 +1533,7 @@ p.dark-text {
         gap: 1rem;
     }
     .comparison-item img {
-        height: 50px; 
+        height: 100px; 
         border-radius: 8px;
     }
     .comparison-price {
@@ -1980,4 +1980,304 @@ p.dark-text {
     .social-proof-toast.visible {
         transform: translateX(-50%) translateY(0);
     }
+}
+
+/* --- ESTILOS DA NOVA SEÇÃO NETFLIX (ADICIONAL) --- */
+
+.netflix-carousel-section {
+    padding: 20px 0 60px 0;
+    position: relative;
+    z-index: 20;
+    margin-top: -100px; /* Sobe por cima do Hero */
+    background: transparent;
+}
+
+.netflix-container {
+    padding-left: 4%;
+}
+
+.netflix-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    border-left: 4px solid #f9a826; /* Amarelo */
+    padding-left: 15px;
+}
+
+/* Container de Rolagem Horizontal */
+.netflix-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0 30px 0; /* Espaço para sombra */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+}
+.netflix-scroll-container::-webkit-scrollbar { display: none; }
+
+/* Card Estilo Netflix */
+.netflix-card {
+    min-width: 200px;
+    max-width: 200px;
+    aspect-ratio: 2/3;
+    border-radius: 6px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0.3s;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+
+.netflix-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Efeito Hover */
+.netflix-card:hover {
+    transform: scale(1.15);
+    z-index: 100;
+    border-color: #f9a826;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* Ícone Play */
+.netflix-card::after {
+    content: '▶';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    transition: transform 0.3s;
+}
+.netflix-card:hover::after { transform: translate(-50%, -50%) scale(1); }
+
+/* --- ESTILOS DO MODAL DE VÍDEO --- */
+.video-modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+.video-modal-overlay.active { opacity: 1; visibility: visible; }
+
+.video-modal-container {
+    width: 90%; max-width: 900px;
+    position: relative;
+    background: #000;
+    box-shadow: 0 0 40px rgba(249, 168, 38, 0.15);
+    border-radius: 12px;
+}
+
+.close-video-btn {
+    position: absolute; top: -40px; right: 0;
+    background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer;
+}
+.close-video-btn:hover { color: #f9a826; }
+
+.video-wrapper {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;
+}
+.video-wrapper iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+@media (max-width: 768px) {
+    .netflix-card { min-width: 140px; max-width: 140px; }
+    .netflix-carousel-section { margin-top: -50px; }
+}
+
+/* --- ESTILO IPHONE REALISTA --- */
+
+/* Moldura do Celular */
+.iphone-mockup {
+    width: 300px; /* Largura de um celular padrão */
+    height: 600px; /* Altura */
+    background-color: #000;
+    border-radius: 40px; /* Bordas arredondadas do aparelho */
+    border: 12px solid #1a1a1a; /* Borda metálica escura */
+    margin: 0 auto; /* Centraliza */
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.1);
+    z-index: 10;
+}
+
+/* O "Notch" (Recorte da câmera em cima) */
+.iphone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background-color: #1a1a1a;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 20;
+}
+
+/* Tela do Celular */
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #fff; /* Fundo branco (WhatsApp) */
+    border-radius: 30px;
+    overflow: hidden; /* Corta o que passar da tela */
+    position: relative;
+}
+
+/* Ajustes Específicos para o Carrossel dentro do iPhone */
+.iphone-screen .testimonial-carousel {
+    width: 100%;
+    height: 100%;
+    max-width: none; /* Remove limite antigo */
+    margin: 0;
+}
+
+.iphone-screen .testimonial-slider {
+    height: 100%;
+}
+
+.iphone-screen .testimonial-slide {
+    padding: 0; /* Remove espaçamento lateral */
+    height: 100%;
+}
+
+/* Ajuste dos Cards e Imagens para preencher a tela */
+.iphone-screen .testimonial-card {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    height: 100%;
+}
+
+.iphone-screen .testimonial-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir toda a tela sem distorcer */
+    border-radius: 0;
+}
+
+/* Botões de Navegação (Setinhas) */
+.iphone-screen .carousel-nav-btn {
+    width: 35px;
+    height: 35px;
+    background: lab(71.39% 32.23 76.68); /* Fundo semi-transparente */
+    border: none;
+    backdrop-filter: blur(2px);
+}
+.iphone-screen .carousel-nav-btn:hover {
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+}
+.iphone-screen .prev { left: 10px; }
+.iphone-screen .next { right: 10px; }
+
+/* Ajuste das bolinhas fora do celular */
+#carousel-dots-nav {
+    margin-top: 30px;
+}
+
+/* =========================================
+   SEÇÃO DESTAQUES (CANAIS) - NOVO
+========================================== */
+.highlights-section {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, hsl(0, 0%, 4%), #141414); /* Fundo escuro premium */
+    position: relative;
+    overflow: hidden;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Responsivo automático */
+    gap: 25px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.channel-card {
+    background: rgba(255, 136, 0, 0.221); /* Efeito Vidro */
+    border: 1px solid rgb(249, 108, 1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    height: 100px;
+    position: relative;
+}
+
+.channel-card img {
+    max-width: 100%;
+    max-height: 100px;
+    filter: grayscale(100%) opacity(0.7); /* Começa preto e branco */
+    transition: all 0.4s ease;
+    object-fit: contain;
+}
+
+/* Efeito ao passar o mouse */
+.channel-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 
+                0 0 15px rgba(211, 83, 9, 0.61); /* Brilho vermelho sutil */
+    border-color: rgba(27, 1, 175, 0.449);
+}
+
+.channel-card:hover img {
+    filter: grayscale(0%) opacity(1); /* Fica colorido */
+    transform: scale(1.1);
+}
+/* === BOTÃO VOLTAR AO TOPO === */
+.back-to-top {
+    position: fixed; /* Fica fixo na tela */
+    bottom: 30px;    /* Distância do fundo */
+    right: 30px;     /* Distância da direita */
+    width: 50px;
+    height: 50px;
+    background-color: #e57009fb; /* Vermelho TopStreaming */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Deixa redondo */
+    cursor: pointer;
+    z-index: 999;    /* Fica acima de tudo, mas abaixo de modais */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;      /* Começa invisível */
+    visibility: hidden;
+    transition: all 0.3s ease; /* Animação suave */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Quando o botão deve aparecer */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Ícone da seta */
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Quando passa o mouse em cima */
+.back-to-top:hover {
+    background-color: #ff9100; /* Vermelho mais escuro */
+    transform: translateY(-5px); /* Sobe um pouquinho */
 }
