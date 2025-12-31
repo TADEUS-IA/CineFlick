@@ -111,43 +111,43 @@ const CONFIG = {
     testimonials: [
         {
             id: 't1',
-            imageUrl: '1.jpg'
+            imageUrl: '1.jpeg'
         },
         {
             id: 't2',
-            imageUrl: '2.jpg'
+            imageUrl: '2.jpeg'
         },
         {
             id: 't3',
-            imageUrl: '3.jpg'
+            imageUrl: '3.jpeg'
         },
         {
             id: 't4',
-            imageUrl: '4.jpg'
+            imageUrl: '4.jpeg'
         },
         {
             id: 't5',
-            imageUrl: '5.jpg'
+            imageUrl: '5.jpeg'
         },
         {
             id: 't6',
-            imageUrl: '6.jpg'
+            imageUrl: '6.jpeg'
         },
         {
             id: 't7',
-            imageUrl: '1.jpg'
+            imageUrl: '7.jpeg'
         },
         {
             id: 't8',
-            imageUrl: '2.jpg'
+            imageUrl: '8.jpeg'
         },
         {
             id: 't9',
-            imageUrl: '3.jpg'
+            imageUrl: '9.jpeg'
         },
         {
             id: 't10',
-            imageUrl: '4.jpg'
+            imageUrl: '1.jpeg'
         },
     ]
 };
@@ -841,3 +841,65 @@ function initSocialProof() {
     const firstInterval = getRandomInt(7000, 12000); 
     setTimeout(showSocialProofToast, firstInterval);
 }
+
+/**
+ * ===================================================================
+ * LÓGICA DA NOVA SEÇÃO NETFLIX (ADICIONAL)
+ * ===================================================================
+ */
+
+// Dados exclusivos para o carrossel do topo
+const NETFLIX_DATA = [
+    { title: 'Duna: Parte 2', img: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', video: 'VBRiCWTpQGg' },
+    { title: 'The Boys', img: 'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/11/stranger-things-10-1.jpg?w=419&h=283&crop=0', video: 'GqR2FG3G810' },
+    { title: 'One Piece', img: 'https://www.techadvisor.com/wp-content/uploads/2025/12/The-Boys-season-4-Homelander-1.jpg?quality=50&strip=all', video: 'm1lv458bxdg' },
+    { title: 'John Wick 4', img: 'https://upload.wikimedia.org/wikipedia/pt/d/d5/Avatar_Fire_and_Ash.webp', video: 'YyhPMphxMdw' },
+    { title: 'Super Mario', img: 'https://m.media-amazon.com/images/M/MV5BNDg4ZDQwMDctYWI4ZS00ZGIzLTliNDUtM2EzZjk0Y2U2Y2JjXkEyXkFqcGc@._V1_.jpg', video: 'mXHanabYyOg' },
+    { title: 'A Freira 2', img: 'https://ingresso-a.akamaihd.net/prd/img/movie/predador-terras-selvagens/330f609e-6c07-445a-ba7b-d313bdcfd974.webp', video: 'w4HNJqkooZo' },
+    { title: 'Homem Aranha', img: 'https://m.media-amazon.com/images/S/pv-target-images/662512fdedf92aa2375c4514eeea620ff472a9740e389b8d3f73eea5e5bfc342.jpg', video: 'JfVOs4VSpmA' }
+];
+
+// Função que inicia apenas essa nova seção
+function initNetflixSection() {
+    const container = document.getElementById('netflix-scroll-container');
+    if(!container) return;
+
+    let html = '';
+    NETFLIX_DATA.forEach(movie => {
+        html += `
+            <div class="netflix-card" onclick="openVideoModal('${movie.video}')">
+                <img src="${movie.img}" alt="${movie.title}">
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+// Funções do Modal (Independentes)
+function openVideoModal(videoId) {
+    const overlay = document.getElementById('video-modal-overlay');
+    const iframe = document.getElementById('modal-video-iframe');
+    if(overlay && iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        overlay.classList.add('active');
+    }
+}
+
+// Inicializa o botão de fechar
+document.addEventListener('DOMContentLoaded', () => {
+    initNetflixSection(); // Carrega os filmes novos
+
+    const overlay = document.getElementById('video-modal-overlay');
+    const closeBtn = document.getElementById('close-video-btn');
+    const iframe = document.getElementById('modal-video-iframe');
+
+    if(overlay && closeBtn) {
+        const closeFunc = () => {
+            overlay.classList.remove('active');
+            if(iframe) setTimeout(() => iframe.src = '', 300);
+        };
+        closeBtn.onclick = closeFunc;
+        overlay.onclick = (e) => { if(e.target === overlay) closeFunc(); };
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeFunc(); });
+    }
+});
