@@ -856,7 +856,7 @@ const NETFLIX_DATA = [
     { title: 'John Wick 4', img: 'https://upload.wikimedia.org/wikipedia/pt/d/d5/Avatar_Fire_and_Ash.webp', video: 'YyhPMphxMdw' },
     { title: 'Super Mario', img: 'https://m.media-amazon.com/images/M/MV5BNDg4ZDQwMDctYWI4ZS00ZGIzLTliNDUtM2EzZjk0Y2U2Y2JjXkEyXkFqcGc@._V1_.jpg', video: 'mXHanabYyOg' },
     { title: 'A Freira 2', img: 'https://ingresso-a.akamaihd.net/prd/img/movie/predador-terras-selvagens/330f609e-6c07-445a-ba7b-d313bdcfd974.webp', video: 'w4HNJqkooZo' },
-    { title: 'Homem Aranha', img: 'https://m.media-amazon.com/images/S/pv-target-images/662512fdedf92aa2375c4514eeea620ff472a9740e389b8d3f73eea5e5bfc342.jpg', video: 'JfVOs4VSpmA' }
+    { title: 'Homem Aranha', img: 'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg', video: 'JfVOs4VSpmA' }
 ];
 
 // Função que inicia apenas essa nova seção
