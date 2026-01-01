@@ -787,7 +787,7 @@ p.dark-text {
     padding-top: 60px;
 }
 .comparison-card {
-    max-width: 380px; 
+    max-width: 370px; 
     margin: 0 auto;
     background-color: var(--color-primary); 
     border-radius: 24px;
