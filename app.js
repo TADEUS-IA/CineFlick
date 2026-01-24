@@ -1,13 +1,198 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Conteúdo PAUSE | Premium Experience</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+'use strict';
 
-    <script>
+/**
+ * ===================================================================
+ * CONFIGURAÇÃO CENTRAL
+ * ===================================================================
+ * Altere todos os IDs, URLs e dados da página aqui.
+ */
+const CONFIG = {
+    // IDs de Tracking
+    metaPixelId: '1148594784078039',
+    gtmId: 'GTM-SEU_ID_AQUI',
+
+    // Endpoints de Integração
+    n8n: {
+        enabled: true, // Mude para false para desabilitar o n8n
+        url: 'https://seu-dominio-n8n.com/webhook/chave-secreta'
+    },
+    googleSheets: {
+        enabled: true, // Mude para false para desabilitar o G. Sheets
+        // IMPORTANTE: Este deve ser o URL de deploy do seu Google Apps Script
+        appsScriptUrl: 'https://script.google.com/macros/s/SEU_ID_APPS_SCRIPT/exec',
+        sheetId: 'ID_DA_SUA_PLANILHA_GOOGLE',
+        sheetName: 'Logs' // Nome da aba onde os dados serão gravados
+    },
+
+    // Links de CTA e Vídeos
+    checkoutUrl: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe',
+    supportUrl: 'https://wa.me/11942439819', 
+    
+    // [ATUALIZADO] Links dos Planos atualizados conforme o novo HTML
+    plans: {
+        mensal: 'https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 19,90
+        trimestral: 'https://pay.kirvano.com/63204ff4-d01c-4afc-b9ed-7d085eb045f0?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 39,90
+        semestral: 'https://pay.kirvano.com/2fa263d7-8ab5-47ca-bed8-785dbda2d330?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe', // R$ 69,90
+        anual: 'https://pay.kirvano.com/5630b4f0-09c8-476b-8739-4bef06cad2de?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe' // R$ 129,90
+    },
+    
+    video: {
+        // ID do vídeo do YouTube para o Hero
+        heroVideoId: 'qEVUtrk8_B4', // Ex: ID do trailer de "Duna 2"
+        
+        // URL do vídeo demo (pode ser YouTube ou local)
+        appDemoUrl: 'https://www.youtube.com/embed/D1m-B38btHM?si=lRpk4tPbz-dOAF_B' // Ex: 'videos/app-demo.mp4'
+    },
+
+    // DADOS DOS CARDS COM CARROSSEL INTERNO
+    featureCards: [
+        {
+            id: 'filmes',
+            title: 'Filmes Incríveis',
+            description: 'Assista a clássicos, lançamentos e grandes produções vencedoras de prêmios, tudo em alta definição e com uma seleção que agrada a todos os gostos.',
+            images: [
+                'https://m.media-amazon.com/images/M/MV5BNzk5MTE4YTUtNGU2My00MTYxLWE5NGItODk4YWFkOWYyMjA5XkEyXkFqcGc@._V1_.jpg', // Duna 2
+                'https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3580195:1730981795/Interestelar.jpg?f=16x9&h=574&w=1020&$p$f$h$w=ec37398', // Interstellar
+                'https://movienonsense.com/wp-content/uploads/2023/12/oppenheimer.jpg'  // Oppenheimer
+            ]
+        },
+        {
+            id: 'series',
+            title: 'Séries Imperdíveis',
+            description: 'Descubra séries aclamadas e sucessos do momento, com temporadas completas disponíveis para você maratonar.',
+            images: [
+                'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/11/WEDNESDAY-JENNA-ORTEGA_GALLERY-SINGLE_0287R2C-e1700688379502.jpg?w=1200&h=1200&crop=1', // wandinha
+                'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2023/05/the-boys.jpeg?w=1200&h=1200&crop=1', // the boys
+                'https://jpimg.com.br/uploads/2024/09/image_6487327-3-2.jpg'  // The Last of Us
+            ]
+        },
+        {
+            id: 'animes',
+            title: 'Animes Crunchyroll!',
+            description: 'Possuímos uma lista enorme com todos os animes do momento atualizados e em qualidade HD para você maratonar.',
+            images: [
+                'https://i.redd.it/sypoeebfdvox.jpg', // One Piece
+                'https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtYmVjMy00YjRiLTkxMWUtNzZkMDNiYjZhNmViXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', // Jujutsu Kaisen
+                'https://upload.wikimedia.org/wikipedia/pt/d/d2/Naruto_vol._01.jpg'  // Attack on Titan
+            ]
+        },
+        {
+            id: 'canais',
+            title: 'Canais Adulto',
+            description: 'Toda a lista de canais adultos protegido com senha para bloqueio e segurança das crianças.',
+            images: [
+                'https://ofertasclaro.cdn.prismic.io/ofertasclaro/aC4F-SdWJ-7kSaFz_PlayboyTV.svg',
+                'https://www.claro.com.br/files/104379/860x1440/100edfadc4/assinar-canais-adultos-porno-sextreme.png/m/filters:quality(75)',
+                'https://www.thedailytelevision.com/sites/default/files/notas/imagenes/interior/venus_esperanza_grande.jpg'
+            ]
+        },
+        {
+            id: 'kids',
+            title: 'Conteúdo Infantil',
+            description: 'Toda a lista para a criançada se divertir além de disney plus e muito mais!',
+            images: [
+                'https://www.imagenspng.com.br/wp-content/uploads/2018/10/patrulha-canina-05.png',
+                'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/79/96/51/19694367.jpg'
+            ]
+        },
+        {
+            id: 'qualidade',
+            title: 'Esporte AO VIVO!',
+            description: 'Prepare-se para ter literalmente todos os acessos dos canais de esporte, futebol, artes marciais e muito mais!',
+            images: [
+                'https://cdn.prod.website-files.com/5cf5a026c170934c311c121c/66e9ec7d2c7b7688aa3e9835_FP_BR_OGt.jpg',
+                'https://cdn.folhape.com.br/img/pc/1100/1/dn_arquivo/2018/03/og-default.jpg',
+                'https://racingonline.com.br/wp-content/uploads/2025/11/Largada-GP-Sao-Paulo-de-F1-2024.jpg',
+            ]
+        }
+    ],
+
+    // DADOS DOS DEPOIMENTOS (PRINTS DO WHATSAPP)
+    testimonials: [
+        {
+            id: 't1',
+            imageUrl: '1.jpeg'
+        },
+        {
+            id: 't2',
+            imageUrl: '2.jpeg'
+        },
+        {
+            id: 't3',
+            imageUrl: '3.jpeg'
+        },
+        {
+            id: 't4',
+            imageUrl: '4.jpeg'
+        },
+        {
+            id: 't5',
+            imageUrl: '5.jpeg'
+        },
+        {
+            id: 't6',
+            imageUrl: '6.jpeg'
+        },
+        {
+            id: 't7',
+            imageUrl: '7.jpeg'
+        },
+        {
+            id: 't8',
+            imageUrl: '8.jpeg'
+        },
+        {
+            id: 't9',
+            imageUrl: '9.jpeg'
+        },
+        {
+            id: 't10',
+            imageUrl: '1.jpeg'
+        },
+    ]
+};
+
+/**
+ * ===================================================================
+ * MÓDULO DE INICIALIZAÇÃO
+ * ===================================================================
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    initAnalytics();
+    initStickyNav(); // Controla a NAV flutuante
+    initHeroVideo();
+    initAppVideo();
+    populateFeatureCards(); // Popula os 6 cards (layout atualizado)
+    populateTestimonials(); // Popula os slides de depoimentos
+    initTestimonialCarousel(); // Ativa o carrossel de depoimentos
+    initFAQAccordion(); // Ativa o FAQ
+    initEventListeners();
+    initScrollAnimations();
+    
+    // [NOVO] Inicia o ciclo de notificações de prova social
+    initSocialProof();
+});
+
+/**
+ * Injeta dinamicamente os scripts de Meta Pixel e GTM no <head>.
+ */
+function initAnalytics() {
+    // Injeção do Google Tag Manager
+    if (CONFIG.gtmId) {
+        const gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${CONFIG.gtmId}`;
+        document.head.appendChild(gtmScript);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', CONFIG.gtmId);
+        console.log('GTM Inicializado.');
+    }
+
+    // Injeção do Meta Pixel
+    if (CONFIG.metaPixelId) {
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -16,290 +201,706 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'SEU_PIXEL_ID_AQUI'); 
-        fbq('track', 'PageView');
-    </script>
+        fbq('init', CONFIG.metaPixelId);
+        
+        /* * [CORREÇÃO APLICADA] 
+         * Usamos nossa função central 'trackEvent' para que o
+         * PageView também seja enviado para a CAPI (Servidor).
+         */
+        trackEvent('PageView', { event: 'page_view' });
 
-    <style>
-        :root {
-            --bg-color: #000000;
-            --card-bg: #0a0a0a;
-            --primary-red: #e50914; 
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        console.log('Meta Pixel Inicializado.');
+    }
+}
+
+/**
+ * ===================================================================
+ * MÓDULO DA NAVEGAÇÃO STICKY
+ * ===================================================================
+ */
+function initStickyNav() {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+
+    const stickyThreshold = 10; 
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > stickyThreshold) {
+            nav.classList.add('is-sticky');
+        } else {
+            nav.classList.remove('is-sticky');
         }
+    });
+}
 
-        * { 
-            margin: 0; padding: 0; box-sizing: border-box; 
-            -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; 
+
+/**
+ * Configura o Iframe do vídeo de fundo do Hero.
+ */
+function initHeroVideo() {
+    const iframe = document.getElementById('hero-video-iframe');
+    if (iframe && CONFIG.video.heroVideoId) {
+        const params = [
+            'autoplay=1',
+            'mute=1',
+            'loop=1',
+            `playlist=${CONFIG.video.heroVideoId}`,
+            'controls=0',
+            'showinfo=0',
+            'rel=0',
+            'iv_load_policy=3',
+            'modestbranding=1'
+        ].join('&');
+        
+        iframe.src = `https://www.youtube.com/embed/${CONFIG.video.heroVideoId}?${params}`;
+    }
+}
+
+/**
+ * Configura o Iframe do vídeo de demonstração do app.
+ */
+function initAppVideo() {
+    const iframe = document.getElementById('app-demo-video');
+    if (iframe && CONFIG.video.appDemoUrl) {
+        iframe.src = CONFIG.video.appDemoUrl;
+    }
+}
+
+/**
+ * ===================================================================
+ * POPULA OS CARDS DE FEATURES (Layout Atualizado)
+ * ===================================================================
+ */
+function populateFeatureCards() {
+    const grid = document.getElementById('feature-card-grid');
+    if (!grid || !CONFIG.featureCards) return;
+
+    let featuresHTML = '';
+    CONFIG.featureCards.forEach(card => {
+        const imageUrl = card.images[0] || 'https://via.placeholder.com/400x225/2a2a4a/ffffff?text=TopStreaming'; // Placeholder
+
+        featuresHTML += `
+            <article class="feature-card animate-on-scroll" data-card-id="${card.id}">
+                <div class="card-image-carousel"> 
+                    <img src="${imageUrl}" alt="${card.title}" class="active">
+                </div>
+                <div class="card-content">
+                    <h3>${card.title}</h3>
+                    <p>${card.description}</p>
+                </div>
+            </article>
+        `;
+    });
+
+    grid.innerHTML = featuresHTML;
+}
+
+/**
+ * ===================================================================
+ * POPULA O CARROSSEL DE DEPOIMENTOS
+ * ===================================================================
+ */
+function populateTestimonials() {
+    const slider = document.getElementById('testimonial-slider');
+    const dotsContainer = document.getElementById('carousel-dots-nav');
+    if (!slider || !dotsContainer || !CONFIG.testimonials) return;
+
+    let sliderHTML = '';
+    let dotsHTML = '';
+
+    CONFIG.testimonials.forEach((testimonial, index) => {
+        const isActive = index === 0 ? 'active' : '';
+
+        // Slide (Card com a imagem)
+        sliderHTML += `
+            <div class="testimonial-slide">
+                <div class="testimonial-card">
+                    <img src="${testimonial.imageUrl}" alt="Depoimento ${testimonial.id}">
+                </div>
+            </div>
+        `;
+        
+        // Dot
+        dotsHTML += `<button class="dot-nav ${isActive}" data-index="${index}"></button>`;
+    });
+
+    slider.innerHTML = sliderHTML;
+    dotsContainer.innerHTML = dotsHTML;
+}
+
+/**
+ * ===================================================================
+ * INICIA O CARROSSEL DE DEPOIMENTOS
+ * ===================================================================
+ */
+function initTestimonialCarousel() {
+    const slider = document.getElementById('testimonial-slider');
+    const dotsContainer = document.getElementById('carousel-dots-nav');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    
+    if (!slider || !dotsContainer || !prevBtn || !nextBtn) return;
+
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.carousel-dots-nav .dot-nav');
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const autoplayInterval = 4000; // 4 segundos
+    let autoplayTimer;
+
+    function goToSlide(index) {
+        if (index < 0) {
+            index = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            index = 0;
         }
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        currentIndex = index;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            padding: 20px;
-            overflow-x: hidden;
-            overflow-y: auto; 
-            touch-action: pan-y; 
+    function startAutoplay() {
+        clearInterval(autoplayTimer); 
+        autoplayTimer = setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, autoplayInterval);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayTimer);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+        stopAutoplay(); 
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+        stopAutoplay(); 
+    });
+
+    dotsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('dot-nav')) {
+            const index = parseInt(e.target.dataset.index, 10);
+            goToSlide(index);
+            stopAutoplay(); 
         }
+    });
+    
+    slider.closest('.testimonial-carousel').addEventListener('mouseenter', stopAutoplay);
+    slider.closest('.testimonial-carousel').addEventListener('mouseleave', startAutoplay);
 
-        .container {
-            width: 100%;
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-        }
+    goToSlide(0); 
+    startAutoplay(); 
+}
 
-        .logo {
-            max-width: 120px;
-            margin-bottom: 20px;
-            pointer-events: none;
-        }
 
-        /* CONTAINER DO VÍDEO COM ENQUADRAMENTO DINÂMICO */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Ratio */
-            background: #000;
-            border-radius: 12px;
-            border: 1px solid #1a1a1a;
-            box-shadow: 0 0 50px rgba(229, 9, 20, 0.15);
-            overflow: hidden;
-        }
+/**
+ * ===================================================================
+ * INICIA O ACORDION (FAQ)
+ * ===================================================================
+ */
+function initFAQAccordion() {
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    if (!allFaqItems.length) return;
 
-        /* O PLAYER FICA "POR BAIXO" E SEM CONTROLES */
-        #mainVideo {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none;
-            pointer-events: none; /* Bloqueia interação direta com o YouTube */
-        }
-
-        /* CAMADA TRANSPARENTE QUE RECEBE OS CLIQUES - IMPEDE VER A LOGO */
-        .video-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 10;
-            cursor: pointer;
-        }
-
-        .custom-controls {
-            background: var(--card-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            padding: 15px;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            border: 1px solid #1a1a1a;
-            border-top: none;
-        }
-
-        .control-btn {
-            background: none; border: none; color: #555;
-            cursor: pointer; font-size: 10px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1px;
-            transition: var(--transition);
-        }
-
-        .control-btn:hover { color: var(--white); }
-        #playPauseBtn { color: var(--primary-red); font-size: 12px; }
-
-        .rotate-instruction {
-            margin-top: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .phone-icon {
-            width: 20px; height: 35px;
-            border: 2px solid var(--white); border-radius: 4px;
-            position: relative;
-            animation: rotatePhone 2.5s ease-in-out infinite;
-        }
-
-        @keyframes rotatePhone {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(90deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .rotate-text { font-size: 10px; color: #777; text-transform: uppercase; }
-
-        .cta-button {
-            display: none; 
-            margin-top: 30px;
-            padding: 18px 40px;
-            width: 90%;
-            max-width: 400px;
-            background-color: var(--primary-red);
-            color: var(--white);
-            font-family: 'Anton', sans-serif;
-            font-size: 24px;
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
-            animation: slideUp 0.8s ease forwards;
-        }
-
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* AJUSTE PARA ENCAIXE PERFEITO NO MODO DE LADO (IOS/ANDROID) */
-        @media (orientation: landscape) and (max-height: 500px) {
-            body { padding: 5px; }
-            .container { max-width: 520px; }
-            .logo { max-width: 80px; margin-bottom: 5px; }
-            .rotate-instruction { display: none; }
-            .cta-button { margin-top: 15px; font-size: 20px; padding: 12px; }
-            footer { margin-top: 15px; }
-        }
-
-        footer { margin-top: 40px; margin-bottom: 20px; font-size: 9px; color: #333; }
-    </style>
-</head>
-<body oncontextmenu="return false;">
-
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
-
-        <div class="video-wrapper">
-            <div class="video-overlay" onclick="togglePlay()"></div>
-            <div id="mainVideo"></div>
-        </div>
-
-        <div class="custom-controls">
-            <button class="control-btn" onclick="seek(-10)">-10s</button>
-            <button class="control-btn" id="playPauseBtn" onclick="togglePlay()">REPRODUZIR</button>
-            <button class="control-btn" onclick="seek(10)">+10s</button>
-        </div>
-
-        <div class="rotate-instruction">
-            <div class="phone-icon"></div>
-            <p class="rotate-text">Vire a tela para uma melhor visualização</p>
-        </div>
-
-        <button id="ctaBtn" class="cta-button" onclick="handleAction()">
-            ASSISTIR AGORA
-        </button>
-    </div>
-
-    <footer>
-        &copy; 2026 EXPERIÊNCIA PRIVADA. TODOS OS DIREITOS RESERVADOS.
-    </footer>
-
-    <script src="https://www.youtube.com/iframe_api"></script>
-
-    <script>
-        let player;
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const ctaBtn = document.getElementById('ctaBtn');
-        const REVEAL_TIME = 215; 
-        let shown = false;
-
-        // Inicializa o vídeo do YouTube com as travas de interface solicitadas
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('mainVideo', {
-                videoId: 'v_GUMeiU-AU', // ID DO VÍDEO AQUI
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,          // SEM CONTROLES ORIGINAIS
-                    'modestbranding': 1,    // TIRA LOGO GRANDE
-                    'rel': 0,               // SEM VÍDEOS RELACIONADOS
-                    'showinfo': 0,
-                    'iv_load_policy': 3,
-                    'disablekb': 1,
-                    'playsinline': 1        // IMPORTANTE PARA IOS NÃO ABRIR FULLSCREEN NATIVO
-                },
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function togglePlay() {
-            const state = player.getPlayerState();
-            if (state === YT.PlayerState.PLAYING) {
-                player.pauseVideo();
-                playPauseBtn.innerText = "REPRODUZIR";
-            } else {
-                player.playVideo();
-                player.unMute(); // GARANTE O SOM AO CLICAR
-                playPauseBtn.innerText = "PAUSAR";
-                fbq('track', 'ViewContent');
-            }
-        }
-
-        function seek(s) {
-            const current = player.getCurrentTime();
-            player.seekTo(current + s, true);
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.PLAYING) {
-                const checkTime = setInterval(() => {
-                    let time = player.getCurrentTime();
-                    if (!shown && time >= REVEAL_TIME) {
-                        shown = true;
-                        ctaBtn.style.display = 'inline-block';
-                        ctaBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        clearInterval(checkTime);
+    allFaqItems.forEach(item => {
+        item.addEventListener('toggle', (event) => {
+            if (item.open) {
+                allFaqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.open) {
+                        otherItem.open = false;
                     }
-                    if (player.getPlayerState() !== YT.PlayerState.PLAYING) clearInterval(checkTime);
-                }, 1000);
-            }
-        }
-
-        // FUNCIONALIDADES ORIGINAIS: PIXEL, N8N E GOOGLE APP SCRIPT (PRESERVADAS)
-        async function handleAction() {
-            fbq('track', 'Lead');
-
-            const payload = {
-                event: "clique_botao_vsl",
-                url: window.location.href,
-                time: new Date().toISOString()
-            };
-
-            try {
-                // Envio para N8N
-                fetch('SUA_URL_DO_N8N_AQUI', { 
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload) 
                 });
-
-                // Envio para GOOGLE APP SCRIPT
-                fetch('SUA_URL_DO_GOOGLE_APP_SCRIPT_AQUI', { 
-                    method: 'POST', 
-                    mode: 'no-cors',
-                    body: JSON.stringify(payload) 
-                });
-
-            } catch (e) {
-                console.log("Erro no disparo dos dados");
             }
+        });
+    });
+}
 
-            setTimeout(() => {
-                window.location.href = "https://pay.kirvano.com/r/e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe";
-            }, 500); 
+
+/* =================================================================== */
+/* LÓGICA DO POP-UP DE DESCONTO (MODAL)                           */
+/* =================================================================== */
+
+/**
+ * Exibe o modal de parabéns e configura seu link de destino.
+ * @param {string} checkoutUrl - A URL de destino para o botão de confirmação.
+ */
+function showCongratsModal(checkoutUrl) {
+    const modal = document.getElementById('congrats-modal');
+    const modalButton = document.getElementById('modal-confirm-button');
+        
+    if (!modal || !modalButton) {
+        console.error('Modal de parabéns não encontrado. Redirecionando diretamente.');
+        // Fallback: Se o modal falhar, apenas redireciona
+        window.open(checkoutUrl, '_blank'); 
+        return;
+    }
+
+    // Configura o botão do modal com o link correto
+    modalButton.href = checkoutUrl;
+
+    // Exibe o modal
+    modal.classList.add('visible');
+
+    // Função para fechar o modal
+    const closeModal = () => {
+        modal.classList.remove('visible');
+        modal.removeEventListener('mousedown', overlayClickHandler);
+    };
+
+    // Handler para fechar clicando no fundo (overlay)
+    const overlayClickHandler = (e) => {
+        if (e.target === modal) {
+            closeModal();
         }
+    };
+    
+    // Adiciona listener para fechar clicando no fundo
+    modal.addEventListener('mousedown', overlayClickHandler);
+    
+    // Adiciona listener ao botão de confirmação para fechar o modal
+    // (O redirecionamento acontece naturalmente pelo href)
+    modalButton.addEventListener('click', closeModal);
+}
 
-        document.addEventListener('touchstart', function (event) {
-            if (event.touches.length > 1) { event.preventDefault(); }
-        }, { passive: false });
-    </script>
-</body>
-</html>
+
+/**
+ * Adiciona o pop-up de desconto e o tracking em um botão de plano.
+ * @param {HTMLElement} buttonElement - O elemento <a> do botão (ex: #cta-mensal).
+ * @param {string} planName - O nome do plano para tracking (ex: 'Mensal').
+ * @param {string} checkoutUrl - A URL de destino do checkout.
+ */
+function setupPlanButtonListener(buttonElement, planName, checkoutUrl) {
+    if (!buttonElement) {
+        console.warn(`Elemento do botão para o plano ${planName} não encontrado.`);
+        return;
+    }
+
+    buttonElement.href = checkoutUrl;
+    
+    buttonElement.addEventListener('click', (event) => {
+        // 1. Impede a navegação imediata
+        event.preventDefault(); 
+
+        // 2. Rastreia o evento (como já fazia)
+        trackEvent('Select_Plan', { event: 'select_plan', plan_name: planName });
+        
+        // 3. Mostra o modal personalizado (substitui o alert())
+        showCongratsModal(checkoutUrl);
+    });
+}
+
+
+/**
+ * ===================================================================
+ * MÓDULO DE EVENTOS E INTERAÇÕES
+ * ===================================================================
+ */
+function initEventListeners() {
+    
+    // 2. CTA da Navegação
+    const navCTA = document.getElementById('nav-cta');
+    if (navCTA) {
+        navCTA.addEventListener('click', (e) => {
+            console.log('Evento: Clique no CTA da Nav');
+            trackEvent('Nav_CTA_Click', {
+                event: 'nav_cta_click',
+                destination_url: navCTA.href 
+            });
+        });
+    }
+
+    // 3. CTA Principal do Hero
+    const heroCtaMain = document.getElementById('hero-cta-main');
+    if (heroCtaMain) {
+        heroCtaMain.addEventListener('click', (e) => {
+            console.log('Evento: Clique no CTA do Hero (Principal)');
+            trackEvent('Hero_CTA_Click', {
+                event: 'hero_cta_click',
+                destination_url: heroCtaMain.href 
+            });
+        });
+    }
+    
+    // 4. CTA do Plano Mensal (Seção "Como Funciona")
+    const ctaPlanoMensal = document.getElementById('cta-plano-mensal');
+    if (ctaPlanoMensal) {
+        ctaPlanoMensal.href = CONFIG.plans.mensal;
+        ctaPlanoMensal.addEventListener('click', () => trackEvent('Select_Plan_Mensal', { event: 'select_plan', plan_name: 'Plano Mensal (Card Como Funciona)' }));
+    }
+
+    // 5. CTA da Seção de Logos Streaming
+    const ctaStreamingLogos = document.getElementById('cta-streaming-logos');
+    if (ctaStreamingLogos) {
+        ctaStreamingLogos.href = CONFIG.checkoutUrl; 
+        ctaStreamingLogos.addEventListener('click', () => trackEvent('CTA_Streaming_Logos_Click', { event: 'streaming_logos_cta_click', destination_url: CONFIG.checkoutUrl }));
+    }
+
+    // 6. CTA da Chamada Final
+    const ctaFinalCall = document.getElementById('cta-final-call');
+    if(ctaFinalCall) {
+        ctaFinalCall.href = CONFIG.checkoutUrl;
+        ctaFinalCall.addEventListener('click', () => trackEvent('CTA_Final_Call_Click', { event: 'final_cta_click', destination_url: CONFIG.checkoutUrl }));
+    }
+
+    // 7. CTA da Seção de Comparação
+    const ctaComparison = document.getElementById('cta-comparison');
+    if (ctaComparison) {
+        ctaComparison.href = CONFIG.checkoutUrl;
+        ctaComparison.addEventListener('click', () => trackEvent('CTA_Comparison_Click', { event: 'comparison_cta_click', destination_url: CONFIG.checkoutUrl }));
+    }
+
+    /* * [ALTERAÇÃO]
+     * 8. CTAs da Tabela de Preços (4 Planos)
+     * A lógica foi movida para a função helper 'setupPlanButtonListener'
+     * para incluir o pop-up de desconto.
+     */
+    setupPlanButtonListener(
+        document.getElementById('cta-mensal'),
+        'Mensal',
+        CONFIG.plans.mensal
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-trimestral'),
+        'Trimestral',
+        CONFIG.plans.trimestral
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-semestral'),
+        'Semestral',
+        CONFIG.plans.semestral
+    );
+    setupPlanButtonListener(
+        document.getElementById('cta-anual'),
+        'Anual',
+        CONFIG.plans.anual
+    );
+    
+    // 9. CTA da Seção de Garantia
+    const ctaGuarantee = document.getElementById('cta-guarantee');
+    if (ctaGuarantee) {
+        ctaGuarantee.href = CONFIG.checkoutUrl;
+        ctaGuarantee.addEventListener('click', () => trackEvent('CTA_Guarantee_Click', { event: 'guarantee_cta_click', destination_url: CONFIG.checkoutUrl }));
+    }
+    
+    // 10. CTA de Suporte (WhatsApp)
+    const ctaSupport = document.getElementById('cta-support');
+    if (ctaSupport) {
+        ctaSupport.href = CONFIG.supportUrl;
+        ctaSupport.setAttribute('target', '_blank'); 
+        ctaSupport.addEventListener('click', () => trackEvent('CTA_Support_Click', { event: 'support_cta_click', destination_url: CONFIG.supportUrl }));
+    }
+    
+    // 12. Play do Vídeo Demo
+    const appDemoVideo = document.getElementById('app-demo-video');
+    if(appDemoVideo) {
+        appDemoVideo.addEventListener('focus', () => {
+             console.log('Evento: Interação com Vídeo Demo');
+             trackEvent('Demo_Video_Play', {
+                event: 'demo_video_interaction',
+                video_url: appDemoVideo.src
+            });
+        }, { once: true }); // Dispara apenas uma vez
+    }
+}
+
+
+/**
+ * ===================================================================
+ * MÓDULO DE TELEMETRIA E TRACKING (COM CAPI)
+ * ===================================================================
+ */
+function trackEvent(eventName, payload, disableSheets = false) {
+    
+    // 1. Google Tag Manager (GTM)
+    if (window.dataLayer && CONFIG.gtmId) {
+        window.dataLayer.push(payload);
+    }
+
+    // 2. Meta Pixel (Browser-side)
+    if (window.fbq && CONFIG.metaPixelId) {
+        const standardEvents = ['PageView', 'ViewContent', 'AddToCart', 'Purchase', 'Lead', 'Search'];
+        if (standardEvents.includes(eventName)) {
+            window.fbq('track', eventName, payload);
+        } else {
+            window.fbq('trackCustom', eventName, payload);
+        }
+    }
+
+    // 3. Webhook n8n
+    if (CONFIG.n8n.enabled && CONFIG.n8n.url) {
+        sendToWebhook(payload);
+    }
+    
+    // 4. Google Sheets API
+    if (CONFIG.googleSheets.enabled && CONFIG.googleSheets.appsScriptUrl && !disableSheets) {
+        sendToGoogleSheets(payload);
+    }
+
+    // 5. Meta Conversions API (Server-side via Netlify)
+    sendToServerSideCAPI(eventName, payload);
+}
+
+/**
+ * Envia dados para o Webhook do n8n.
+ */
+async function sendToWebhook(payload) {
+    try {
+        await fetch(CONFIG.n8n.url, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Payload enviado ao n8n.');
+    } catch (error) {
+        console.error('Erro ao enviar para n8n:', error);
+    }
+}
+
+/**
+ * Envia dados para o Google Sheets via Google Apps Script (GAS).
+ */
+async function sendToGoogleSheets(payload) {
+    try {
+        const sheetData = {
+            timestamp: new Date().toISOString(),
+            event: payload.event || 'generic_event',
+            detail: payload.movie_title || payload.search_query || payload.destination_url || payload.plan_name || 'N/A',
+            full_payload: JSON.stringify(payload)
+        };
+        
+        await fetch(CONFIG.googleSheets.appsScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors', 
+            body: JSON.stringify(sheetData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Payload enviado ao Google Sheets.');
+    } catch (error) {
+        console.error('Erro ao enviar para Google Sheets:', error);
+    }
+}
+
+/**
+ * ===================================================================
+ * MÓDULO DE ANIMAÇÃO DE SCROLL (Intersection Observer)
+ * ===================================================================
+ */
+function initScrollAnimations() {
+    const targets = document.querySelectorAll('.animate-on-scroll');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            } else {
+                 entry.target.classList.remove('is-visible');
+            }
+        });
+    }, {
+        root: null, // Viewport
+        threshold: 0.1 // 10% do elemento visível
+    });
+
+    targets.forEach(target => observer.observe(target));
+}
+
+
+/* =================================================================== */
+/* [NOVO] MÓDULO DE API DE CONVERSÕES (CAPI) - NETLIFY   */
+/* =================================================================== */
+
+/**
+ * Pega os cookies _fbp e _fbc para enviar ao servidor
+ */
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+/**
+ * Envia o evento para o nosso servidor (Netlify Function)
+ */
+async function sendToServerSideCAPI(eventName, payload) {
+    try {
+        // Prepara os dados para o nosso servidor
+        const capiPayload = {
+            eventName: eventName,
+            eventSourceUrl: window.location.href, // URL onde o evento ocorreu
+            userData: {
+                // Tenta pegar os cookies _fbp e _fbc (se existirem)
+                fbp: getCookie('_fbp') || null,
+                fbc: getCookie('_fbc') || null,
+                // email: "usuario@email.com", // (Exemplo se você coletar)
+            },
+            customData: {
+                value: payload.value || null, // Pega o valor do payload do evento
+                currency: payload.currency || 'BRL' // Pega a moeda do payload ou usa BRL
+            }
+        };
+
+        // URL da Netlify Function (caminho relativo)
+        const serverApiUrl = '/api/track'; 
+
+        await fetch(serverApiUrl, {
+            method: 'POST',
+            body: JSON.stringify(capiPayload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(`[CAPI-Frontend] Evento '${eventName}' enviado ao servidor Netlify.`);
+
+    } catch (error) {
+        console.error('[CAPI-Frontend] Erro ao enviar evento para o servidor:', error);
+    }
+}
+
+
+/* =================================================================== */
+/* [NOVO] MÓDULO DE SOCIAL PROOF (NOTIFICAÇÃO)                       */
+/* =================================================================== */
+
+/**
+ * Gera um número inteiro aleatório dentro de um intervalo.
+ * @param {number} min - O valor mínimo (inclusivo).
+ * @param {number} max - O valor máximo (inclusivo).
+ * @returns {number} O número aleatório.
+ */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Variável global para armazenar a contagem de visitantes estática desta sessão.
+let currentVisitorCount = 0; 
+
+// Constantes de configuração do Toast
+const TOAST_MIN_INTERVAL = 10000; // 10 segundos
+const TOAST_MAX_INTERVAL = 30000; // 30 segundos
+const TOAST_DISPLAY_TIME = 5000;  // 5 segundos
+
+/**
+ * Exibe a notificação (toast) de prova social.
+ */
+function showSocialProofToast() {
+    const toastElement = document.getElementById('social-proof-toast');
+    const visitorCountElement = document.getElementById('visitor-count');
+
+    if (!toastElement || !visitorCountElement) {
+        console.warn('Elementos do Social Proof Toast não encontrados.');
+        return; 
+    }
+
+    // 1. Atualiza o texto (o número de visitantes é estático, o título é fixo)
+    visitorCountElement.textContent = `${currentVisitorCount} pessoas estão nesta página`;
+
+    // 2. Mostra o toast (ativa a animação CSS)
+    toastElement.classList.add('visible');
+
+    // 3. Agenda o desaparecimento do toast
+    setTimeout(() => {
+        toastElement.classList.remove('visible');
+        
+        // 4. Agenda a *próxima* exibição (após o toast atual desaparecer)
+        scheduleNextToast();
+    }, TOAST_DISPLAY_TIME);
+}
+
+/**
+ * Agenda a próxima exibição do toast em um intervalo aleatório.
+ */
+function scheduleNextToast() {
+    const randomInterval = getRandomInt(TOAST_MIN_INTERVAL, TOAST_MAX_INTERVAL);
+    
+    setTimeout(showSocialProofToast, randomInterval);
+}
+
+/**
+ * Inicializa o sistema de prova social.
+ */
+function initSocialProof() {
+    // 1. Define a contagem de visitantes (entre 50 e 1000) para esta sessão.
+    currentVisitorCount = getRandomInt(50, 1000);
+
+    // 2. Agenda a *primeira* exibição do toast.
+    // Usamos um timeout inicial mais curto (ex: 7-12s) para o usuário ver a primeira vez.
+    const firstInterval = getRandomInt(7000, 12000); 
+    setTimeout(showSocialProofToast, firstInterval);
+}
+
+/**
+ * ===================================================================
+ * LÓGICA DA NOVA SEÇÃO NETFLIX (ADICIONAL)
+ * ===================================================================
+ */
+
+// Dados exclusivos para o carrossel do topo
+const NETFLIX_DATA = [
+    { title: 'Duna: Parte 2', img: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', video: 'VBRiCWTpQGg' },
+    { title: 'The Boys', img: 'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/11/stranger-things-10-1.jpg?w=419&h=283&crop=0', video: 'GqR2FG3G810' },
+    { title: 'One Piece', img: 'https://www.techadvisor.com/wp-content/uploads/2025/12/The-Boys-season-4-Homelander-1.jpg?quality=50&strip=all', video: 'm1lv458bxdg' },
+    { title: 'John Wick 4', img: 'https://upload.wikimedia.org/wikipedia/pt/d/d5/Avatar_Fire_and_Ash.webp', video: 'YyhPMphxMdw' },
+    { title: 'Super Mario', img: 'https://m.media-amazon.com/images/M/MV5BNDg4ZDQwMDctYWI4ZS00ZGIzLTliNDUtM2EzZjk0Y2U2Y2JjXkEyXkFqcGc@._V1_.jpg', video: 'mXHanabYyOg' },
+    { title: 'A Freira 2', img: 'https://ingresso-a.akamaihd.net/prd/img/movie/predador-terras-selvagens/330f609e-6c07-445a-ba7b-d313bdcfd974.webp', video: 'w4HNJqkooZo' },
+    { title: 'Homem Aranha', img: 'https://m.media-amazon.com/images/S/pv-target-images/662512fdedf92aa2375c4514eeea620ff472a9740e389b8d3f73eea5e5bfc342.jpg', video: 'JfVOs4VSpmA' }
+];
+
+// Função que inicia apenas essa nova seção
+function initNetflixSection() {
+    const container = document.getElementById('netflix-scroll-container');
+    if(!container) return;
+
+    let html = '';
+    NETFLIX_DATA.forEach(movie => {
+        html += `
+            <div class="netflix-card" onclick="openVideoModal('${movie.video}')">
+                <img src="${movie.img}" alt="${movie.title}">
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+// Funções do Modal (Independentes)
+function openVideoModal(videoId) {
+    const overlay = document.getElementById('video-modal-overlay');
+    const iframe = document.getElementById('modal-video-iframe');
+    if(overlay && iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        overlay.classList.add('active');
+    }
+}
+
+// Inicializa o botão de fechar
+document.addEventListener('DOMContentLoaded', () => {
+    initNetflixSection(); // Carrega os filmes novos
+
+    const overlay = document.getElementById('video-modal-overlay');
+    const closeBtn = document.getElementById('close-video-btn');
+    const iframe = document.getElementById('modal-video-iframe');
+
+    if(overlay && closeBtn) {
+        const closeFunc = () => {
+            overlay.classList.remove('active');
+            if(iframe) setTimeout(() => iframe.src = '', 300);
+        };
+        closeBtn.onclick = closeFunc;
+        overlay.onclick = (e) => { if(e.target === overlay) closeFunc(); };
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeFunc(); });
+    }
+});
+
